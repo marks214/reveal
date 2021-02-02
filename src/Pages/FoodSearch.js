@@ -6,6 +6,7 @@ import {
   Link
 } from 'react-router-dom';
 import axios from 'axios';
+import './FoodSearch.css'
 
 
 export const FoodSearch = () => {
@@ -29,14 +30,13 @@ export const FoodSearch = () => {
   const showFoods = foodResult.map(
     (food) => {
       return (
-        <div key={food.id}>
-          {food.name}
-          <br />{food.energy} kcal
-          <br />{food.protein} g protein
-          <br />{food.carbohydrate} g carbohydrate
-          <br />{food.fat} g fat
-          <br />{food.fiber} g fiber
-          <br />
+        <div key={food.id} className='food-list'>
+          <h1 className='food-list__food-name'>{food.name}</h1>
+          <p>{food.energy.toFixed(2)} kcal</p>
+          <p>{food.protein.toFixed(2)} g protein</p>
+          <p>{food.carbohydrate.toFixed(2)} g carbohydrate</p>
+          <p>{food.fat.toFixed(2)} g fat</p>
+          <p>{food.fiber.toFixed(2)} g fiber</p>
         </div>)
     }
   )

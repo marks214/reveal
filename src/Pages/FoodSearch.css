@@ -1,0 +1,7 @@
+.food-list {
+    border-bottom: 1px solid #eeeeee;
+}
+
+.food-list__food-name {
+    color: plum;
+}
