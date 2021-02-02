@@ -7,12 +7,14 @@ import {
 } from 'react-router-dom';
 import axios from 'axios';
 import './FoodSearch.css'
+import { UserSubmissionForm } from '../Components/UserSubmissionForm'
 
 
 export const FoodSearch = () => {
   // const { food } = useParams();
   const [foodResult, setFoodResult] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const getFood = (food) => {
     axios.get(`/${food}`)
@@ -41,16 +43,37 @@ export const FoodSearch = () => {
     }
   )
 
-return (
-  <div>
-    <FoodSearchForm
-      getFood={getFood} />
-    <section>
-      {foodResult.length > 0 && showFoods}
-    </section>
-    {/* <Delete food={food} /> */}
-    <hr></hr>
-    <Link to='/'>Back to foods</Link>
-  </div>
-)
+  const addFood = (newFood) => {
+    axios.post('/', newFood)
+    .then((response) => {
+      const updatedFoodData = response.data;
+      console.log('updated:');
+      console.log(updatedFoodData);
+      setFoodResult(updatedFoodData);
+      console.log('setFoodResult:');
+      console.log(setFoodResult);
+      setErrorMessage('');
+    })
+    .catch((error) => {
+      setErrorMessage(error.message);
+    })
+  }
+
+
+  return (
+    <div>
+      <FoodSearchForm
+        getFood={getFood} />
+      <section>
+        {foodResult.length > 0 && showFoods}
+      </section>
+      {/* <Delete food={food} /> */}
+      <hr></hr>
+      <div>
+        <UserSubmissionForm 
+        addFood={addFood} />
+      </div>
+      <Link to='/'>Back to foods</Link>
+    </div>
+  )
 }
