@@ -3,14 +3,22 @@ import { BrowserRouter, Link, Switch, Route, Router } from 'react-router-dom';
 import { Home } from './Pages/Home'
 import { FoodSearch } from './Pages/FoodSearch'
 import axios from 'axios';
-import logo from './logo.svg';
+import logo from './RangeRevealLogo.svg';
 import './App.css';
+// import { Logo } from './Components/Logo.tsx'
+
 
 function App() {
 
   return (
     <div className="App">
+      <div class="container">
+        <div class="text">
+          {/* <Logo /> */}
+        </div>
+      </div>
       <header className="App-header">
+        <img src={logo} alt="Logo" className="App-logo" />
         <BrowserRouter>
           <div>
             {/* navigation bar with links to pages */}
