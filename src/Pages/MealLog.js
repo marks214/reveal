@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './MealLog.css'
 
-export const MealLog = () => {
+export const MealLog = ({ id }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [userMeals, setUserMeals] = useState([]);
 
@@ -20,27 +20,22 @@ export const MealLog = () => {
       })
   }, [])
 
-  const deleteMeal = (time) => {
-    const updatedMealLog = userMeals.filter((time) => {
-      return userMeals.id.time !== time;
+
+  const deleteMeal = (meal) => {
+    axios.post(`/api/delete_meal`, meal)
+    .then((response) => {
+      const result = response.data;
+      console.log(result);
+      setUserMeals(result);
+      setErrorMessage('');
     })
-    if (updatedMealLog.length < userMeals.length) {
-      axios.delete(`/api/meal/${time}`)
-        .then((response) => {
-          console.log(response.data)
-          setErrorMessage('removed meal');
-        })
-        .catch((error) => {
-          setErrorMessage('Unable to delte from log');
-        })
-      setUserMeals();
-    }
+    .catch((error) => {
+      setErrorMessage(error.message);
+    })
   }
 
   const showMeals = userMeals.map(
     (meal) => {
-      console.log('userMeals:');
-      console.log(userMeals);
       return (
         <div key={meal.id} className='meal-list'>
           <h1 className='meal-list__meal-name'>{meal.name}</h1>
@@ -58,11 +53,10 @@ export const MealLog = () => {
   return (
     <div>
       <section>
+        {console.log(userMeals.length)}
         {userMeals.length > 0 && showMeals}
       </section>
-      {/* <Delete meal={meal} /> */}
       <hr></hr>
-      {/* <Link to='/'>Back to meals</Link> */}
     </div>
   )
 }
