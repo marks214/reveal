@@ -14,10 +14,10 @@ export const FoodSearch = () => {
   // const { food } = useParams();
   const [foodResult, setFoodResult] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [meal, setMeal] = useState(null);
 
   const getFood = (food) => {
-    axios.get(`/${food}`)
+    axios.get(`/api/food/${food}`)
       .then(response => {
         const result = response.data;
         console.log(result);
@@ -27,6 +27,33 @@ export const FoodSearch = () => {
         setErrorMessage(error.message);
         console.log(errorMessage);
       })
+  }
+
+  const addFoodAsMeal = (selectedFood) => {
+    console.log(selectedFood);
+    axios.post(`/api/meal`, selectedFood)
+      .then((response) => {
+      console.log(`added ${selectedFood} as meal`);
+      const result = response.data;
+      console.log(result);
+      setMeal(result);
+      setErrorMessage('');
+    })
+    .catch((error) => {
+      setErrorMessage(error.message);
+    })
+  }
+
+  const createFood = (newFood) => {
+    axios.post(`/api/food/${newFood}`, newFood)
+    .then((response) => {
+      const updatedFoodData = response.data;
+      setFoodResult(updatedFoodData);
+      setErrorMessage('');
+    })
+    .catch((error) => {
+      setErrorMessage(error.message);
+    })
   }
 
   const showFoods = foodResult.map(
@@ -39,26 +66,10 @@ export const FoodSearch = () => {
           <p>{food.carbohydrate.toFixed(2)} g carbohydrate</p>
           <p>{food.fat.toFixed(2)} g fat</p>
           <p>{food.fiber.toFixed(2)} g fiber</p>
+          <button onClick={() => addFoodAsMeal(food)}>Add</button>
         </div>)
     }
   )
-
-  const addFood = (newFood) => {
-    axios.post('/', newFood)
-    .then((response) => {
-      const updatedFoodData = response.data;
-      console.log('updated:');
-      console.log(updatedFoodData);
-      setFoodResult(updatedFoodData);
-      console.log('setFoodResult:');
-      console.log(setFoodResult);
-      setErrorMessage('');
-    })
-    .catch((error) => {
-      setErrorMessage(error.message);
-    })
-  }
-
 
   return (
     <div>
@@ -71,9 +82,9 @@ export const FoodSearch = () => {
       <hr></hr>
       <div>
         <UserSubmissionForm 
-        addFood={addFood} />
+        createFood={createFood} />
       </div>
-      <Link to='/'>Back to foods</Link>
+      {/* <Link to='/'>Back to foods</Link> */}
     </div>
   )
 }

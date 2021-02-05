@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import FlashMessage from 'react-flash-message';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import './UserSubmissionForm.css'
 
-export const UserSubmissionForm = ({ addFood }) => {
+export const UserSubmissionForm = ({ createFood }) => {
     const initState = {
         name: '',
         energy: '',
@@ -14,6 +15,7 @@ export const UserSubmissionForm = ({ addFood }) => {
     }
 
     const [newFood, setNewFood] = useState(initState);
+    // const [isSubmitted, setIsSubmitted] = useState(false);
 
     const onInputChange = (event) => {
         const newFoodData = {
@@ -23,20 +25,13 @@ export const UserSubmissionForm = ({ addFood }) => {
         setNewFood(newFoodData);
     }
 
-    const FormSuccess = (foodName) => {
-        return (
-            <div clasName="UserSubmissionForm-content-right">
-                <div className="form-successs">
-                    <h3>{foodName} has been added!</h3>
-                </div>
-            </div>
-        )
-    }
     const onFormSubmit = (event) => {
         event.preventDefault();
-        addFood(newFood);
+        createFood(newFood);
         setNewFood(initState);
-        FormSuccess(newFood.name);
+        <FlashMessage duration={50000} persistOnHover={true}>
+            <p>{newFood.name} has been added!</p>
+        </FlashMessage>
     }
 
     return (
@@ -99,9 +94,8 @@ export const UserSubmissionForm = ({ addFood }) => {
                     <input
                         type="submit"
                         value="Add Food"
-                        className="UserSubmissionForm__submit-btn" />
+                        className="UserSubmissionForm__submit-btn"/>
                 </div>
-                {/* {isSubmitted && FormSuccess} */}
             </form>
         </div>
     )
