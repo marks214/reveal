@@ -58,8 +58,10 @@ export const FoodSearch = () => {
 
   const showFoods = foodResult.map(
     (food) => {
+      console.log(food.image);
       return (
         <div key={food.id} className='food-list'>
+          <img src={food.image} alt={food.name} />
           <h1 className='food-list__food-name'>{food.name}</h1>
           <p>{food.energy.toFixed(2)} kcal</p>
           <p>{food.protein.toFixed(2)} g protein</p>
