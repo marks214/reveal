@@ -56,9 +56,6 @@ function App() {
             <Route exact path='/home'>
               <Home />
             </Route>
-            {/* <Route exact path="/data">
-              <MealLog />
-            </Route> */}
             <Route exact path="/about">
               <p>about page placeholder</p>
             </Route>

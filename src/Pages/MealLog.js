@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-// import { Delete } from '../Components/Delete'
 import axios from 'axios';
+import { UserGraphs } from './UserGraphs'
 import './MealLog.css'
 
-export const MealLog = ({ id }) => {
+export const MealLog = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [userMeals, setUserMeals] = useState([]);
 
@@ -52,11 +52,14 @@ export const MealLog = ({ id }) => {
 
   return (
     <div>
-      <section>
+      <div>
         {console.log(userMeals.length)}
         {userMeals.length > 0 && showMeals}
-      </section>
+      </div>
       <hr></hr>
+      <div>
+        <UserGraphs userMeals={userMeals}/>
+      </div>
     </div>
   )
 }
