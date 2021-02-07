@@ -144,26 +144,93 @@ export const UserGraphs = () => {
         <div>
             <div>
                 <h1>UserGraphs</h1>
-                <button onClick={() => getWeekMeals()}>See Graph</button>
+                <button onClick={() => getWeekMeals()}>Reveal</button>
             </div>
             <div style={styles.chartComponentsContainer}>
-                    <div />
-                    {isRevealed && 
-                    <ChartTitle text="test chart title" /> }
-                    {isRevealed && <Label text="text label" rotate />}
-                    <div style={styles.chartWrapper}>
-                        {isRevealed && <LineChart
-                            width={500}
-                            height={300}
-                            data={data.kcal}
-                            horizontalGuides={5}
-                            precision={2}
-                            verticalGuides={1}
-                        />}
-                    </div>
-                    <div />
-                    {isRevealed && <Label text="Days of the Week" />}
+                <div />
+                {isRevealed &&
+                    <ChartTitle text="ENERGY" />}
+                {isRevealed && <Label text="kcal" rotate />}
+                <div style={styles.chartWrapper}>
+                    {isRevealed && <LineChart
+                        width={500}
+                        height={300}
+                        data={data.kcal}
+                        horizontalGuides={5}
+                        precision={2}
+                        verticalGuides={1}
+                    />}
                 </div>
+                <div />
+            </div>
+            <div style={styles.chartComponentsContainer}>
+                <div />
+                {isRevealed &&
+                    <ChartTitle text="CARBOHYDRATE" />}
+                {isRevealed && <Label text="grams" rotate />}
+                <div style={styles.chartWrapper}>
+                    {isRevealed && <LineChart
+                        width={500}
+                        height={300}
+                        data={data.carbohydrate}
+                        horizontalGuides={5}
+                        precision={2}
+                        verticalGuides={1}
+                    />}
+                </div>
+                <div />
+            </div>
+            <div style={styles.chartComponentsContainer}>
+                <div />
+                {isRevealed &&
+                    <ChartTitle text="PROTEIN" />}
+                {isRevealed && <Label text="grams" rotate />}
+                <div style={styles.chartWrapper}>
+                    {isRevealed && <LineChart
+                        width={500}
+                        height={300}
+                        data={data.protein}
+                        horizontalGuides={5}
+                        precision={2}
+                        verticalGuides={1}
+                    />}
+                </div>
+                <div />
+            </div>
+            <div style={styles.chartComponentsContainer}>
+                <div />
+                {isRevealed &&
+                    <ChartTitle text="FAT" />}
+                {isRevealed && <Label text="grams" rotate />}
+                <div style={styles.chartWrapper}>
+                    {isRevealed && <LineChart
+                        width={500}
+                        height={300}
+                        data={data.fat}
+                        horizontalGuides={5}
+                        precision={2}
+                        verticalGuides={1}
+                    />}
+                </div>
+                <div />
+            </div>
+            <div style={styles.chartComponentsContainer}>
+                <div />
+                {isRevealed &&
+                    <ChartTitle text="FIBER" />}
+                {isRevealed && <Label text="grams" rotate />}
+                <div style={styles.chartWrapper}>
+                    {isRevealed && <LineChart
+                        width={500}
+                        height={300}
+                        data={data.fiber}
+                        horizontalGuides={5}
+                        precision={2}
+                        verticalGuides={1}
+                    />}
+                </div>
+                <div />
+            </div>
         </div>
     )
 
