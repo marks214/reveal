@@ -42,9 +42,9 @@ export const Login = () => {
   
     return (
       <div>
-        <h2>Login</h2>
         {!logged? <form action="#">
           <div>
+          <h2>Login</h2>
             <input type="text" 
               placeholder="Username" 
               onChange={handleUsernameChange}
