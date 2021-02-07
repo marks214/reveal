@@ -1,119 +1,129 @@
 import React, { useState, useEffect } from 'react';
-import { Chart, Axis, Tooltip, Geom, Coord, Line, Point } from "bizcharts";
 import axios from 'axios';
+import LineChart from "../Components/LineChart";
+import Label from "../Components/AxisLabel";
+import ChartTitle from "../Components/ChartTitle";
 import './UserGraphs.css'
+
+let data = {}
 
 export const UserGraphs = () => {
     const [errorMessage, setErrorMessage] = useState(null);
-    const [userMeals, setUserMeals] = useState([]);
+    // const [userMeals, setUserMeals] = useState([]);
+    const [isRevealed, setisRevealed] = useState(false);
 
     const parseUserMealData = (userMeals) => {
         console.log(userMeals);
         console.log('hello');
-        let totalsPerDay = {
-            kcal: {
-                'Mon': 0,
-                'Tue': 0,
-                'Wed': 0,
-                'Thu': 0,
-                'Fri': 0,
-                'Sat': 0,
-                'Sun': 0
-            },
-            carbohydrate: {
-                'Mon': 0,
-                'Tue': 0,
-                'Wed': 0,
-                'Thu': 0,
-                'Fri': 0,
-                'Sat': 0,
-                'Sun': 0
-            },
-            protein: {
-                'Mon': 0,
-                'Tue': 0,
-                'Wed': 0,
-                'Thu': 0,
-                'Fri': 0,
-                'Sat': 0,
-                'Sun': 0
-            },
-            fat: {
-                'Mon': 0,
-                'Tue': 0,
-                'Wed': 0,
-                'Thu': 0,
-                'Fri': 0,
-                'Sat': 0,
-                'Sun': 0
-            },
-            fiber: {
-                'Mon': 0,
-                'Tue': 0,
-                'Wed': 0,
-                'Thu': 0,
-                'Fri': 0,
-                'Sat': 0,
-                'Sun': 0
-            },
-        };
+        data = {
+            kcal: [
+                { label: "Mon", x: 0, y: 0 },
+                { label: "Tue", x: 1, y: 0 },
+                { label: "Wed", x: 2, y: 0 },
+                { label: "Thu", x: 3, y: 0 },
+                { label: "Fri", x: 4, y: 0 },
+                { label: "Sat", x: 5, y: 0 },
+                { label: "Sun", x: 6, y: 0 }
+            ],
+            carbohydrate: [
+                { label: "Mon", x: 0, y: 0 },
+                { label: "Tue", x: 1, y: 0 },
+                { label: "Wed", x: 2, y: 0 },
+                { label: "Thu", x: 3, y: 0 },
+                { label: "Fri", x: 4, y: 0 },
+                { label: "Sat", x: 5, y: 0 },
+                { label: "Sun", x: 6, y: 0 }
+            ],
+            protein: [
+                { label: "Mon", x: 0, y: 0 },
+                { label: "Tue", x: 1, y: 0 },
+                { label: "Wed", x: 2, y: 0 },
+                { label: "Thu", x: 3, y: 0 },
+                { label: "Fri", x: 4, y: 0 },
+                { label: "Sat", x: 5, y: 0 },
+                { label: "Sun", x: 6, y: 0 }
+            ],
+            fat: [
+                { label: "Mon", x: 0, y: 0 },
+                { label: "Tue", x: 1, y: 0 },
+                { label: "Wed", x: 2, y: 0 },
+                { label: "Thu", x: 3, y: 0 },
+                { label: "Fri", x: 4, y: 0 },
+                { label: "Sat", x: 5, y: 0 },
+                { label: "Sun", x: 6, y: 0 }
+            ],
+            fiber: [
+                { label: "Mon", x: 0, y: 0 },
+                { label: "Tue", x: 1, y: 0 },
+                { label: "Wed", x: 2, y: 0 },
+                { label: "Thu", x: 3, y: 0 },
+                { label: "Fri", x: 4, y: 0 },
+                { label: "Sat", x: 5, y: 0 },
+                { label: "Sun", x: 6, y: 0 }
+            ]
+        }
+
         for (let i = 0; i < userMeals.length; i++) {
             if (userMeals[i]['time'] === 1) {
-                totalsPerDay['kcal']['Mon'] += userMeals[i]['kcal']
-                totalsPerDay['carbohydrate']['Mon'] += userMeals[i]['carbohydrate']
-                totalsPerDay['protein']['Mon'] += userMeals[i]['protein']
-                totalsPerDay['fat']['Mon'] += userMeals[i]['fat']
-                totalsPerDay['fiber']['Mon'] += userMeals[i]['fiber']
+                data['kcal'][0]['y'] += userMeals[i]['energy']
+                data['carbohydrate'][0]['y'] += userMeals[i]['carbohydrate']
+                data['protein'][0]['y'] += userMeals[i]['protein']
+                data['fat'][0]['y'] += userMeals[i]['fat']
+                data['fiber'][0]['y'] += userMeals[i]['fiber']
             } else if (userMeals[i]['time'] === 2) {
-                totalsPerDay['kcal']['Tue'] += userMeals[i]['kcal']
-                totalsPerDay['carbohydrate']['Tue'] += userMeals[i]['carbohydrate']
-                totalsPerDay['protein']['Tue'] += userMeals[i]['protein']
-                totalsPerDay['fat']['Tue'] += userMeals[i]['fat']
-                totalsPerDay['fiber']['Tue'] += userMeals[i]['fiber']
+                data['kcal'][1]['y'] += userMeals[i]['energy']
+                data['carbohydrate'][1]['y'] += userMeals[i]['carbohydrate']
+                data['protein'][1]['y'] += userMeals[i]['protein']
+                data['fat'][1]['y'] += userMeals[i]['fat']
+                data['fiber'][1]['y'] += userMeals[i]['fiber']
             } else if (userMeals[i]['time'] === 3) {
-                totalsPerDay['kcal']['Wed'] += userMeals[i]['kcal']
-                totalsPerDay['carbohydrate']['Wed'] += userMeals[i]['carbohydrate']
-                totalsPerDay['protein']['Wed'] += userMeals[i]['protein']
-                totalsPerDay['fat']['Wed'] += userMeals[i]['fat']
-                totalsPerDay['fiber']['Wed'] += userMeals[i]['fiber']
+                data['kcal'][2]['y'] += userMeals[i]['energy']
+                data['carbohydrate'][2]['y'] += userMeals[i]['carbohydrate']
+                data['protein'][2]['y'] += userMeals[i]['protein']
+                data['fat'][2]['y'] += userMeals[i]['fat']
+                data['fiber'][2]['y'] += userMeals[i]['fiber']
             } else if (userMeals[i]['time'] === 4) {
-                totalsPerDay['kcal']['Thu'] += userMeals[i]['kcal']
-                totalsPerDay['carbohydrate']['Thu'] += userMeals[i]['carbohydrate']
-                totalsPerDay['protein']['Thu'] += userMeals[i]['protein']
-                totalsPerDay['fat']['Thu'] += userMeals[i]['fat']
-                totalsPerDay['fiber']['Thu'] += userMeals[i]['fiber']
+                data['kcal'][3]['y'] += userMeals[i]['energy']
+                data['carbohydrate'][3]['y'] += userMeals[i]['carbohydrate']
+                data['protein'][3]['y'] += userMeals[i]['protein']
+                data['fat'][3]['y'] += userMeals[i]['fat']
+                data['fiber'][3]['y'] += userMeals[i]['fiber']
             } else if (userMeals[i]['time'] === 5) {
-                totalsPerDay['kcal']['Fri'] += userMeals[i]['kcal']
-                totalsPerDay['carbohydrate']['Fri'] += userMeals[i]['carbohydrate']
-                totalsPerDay['protein']['Fri'] += userMeals[i]['protein']
-                totalsPerDay['fat']['Fri'] += userMeals[i]['fat']
-                totalsPerDay['fiber']['Fri'] += userMeals[i]['fiber']
+                data['kcal'][4]['y'] += userMeals[i]['energy']
+                data['carbohydrate'][4]['y'] += userMeals[i]['carbohydrate']
+                data['protein'][4]['y'] += userMeals[i]['protein']
+                data['fat'][4]['y'] += userMeals[i]['fat']
+                data['fiber'][4]['y'] += userMeals[i]['fiber']
             } else if (userMeals[i]['time'] === 6) {
-                totalsPerDay['kcal']['Sat'] += userMeals[i]['kcal']
-                totalsPerDay['carbohydrate']['Sat'] += userMeals[i]['carbohydrate']
-                totalsPerDay['protein']['Sat'] += userMeals[i]['protein']
-                totalsPerDay['fat']['Sat'] += userMeals[i]['fat']
-                totalsPerDay['fiber']['Sat'] += userMeals[i]['fiber']
+                data['kcal'][5]['y'] += userMeals[i]['energy']
+                data['carbohydrate'][5]['y'] += userMeals[i]['carbohydrate']
+                data['protein'][5]['y'] += userMeals[i]['protein']
+                data['fat'][5]['y'] += userMeals[i]['fat']
+                data['fiber'][5]['y'] += userMeals[i]['fiber']
             } else if (userMeals[i]['time'] === 7) {
-                totalsPerDay['kcal']['Sun'] += userMeals[i]['kcal']
-                totalsPerDay['carbohydrate']['Sun'] += userMeals[i]['carbohydrate']
-                totalsPerDay['protein']['Sun'] += userMeals[i]['protein']
-                totalsPerDay['fat']['Sun'] += userMeals[i]['fat']
-                totalsPerDay['fiber']['Sun'] += userMeals[i]['fiber']
+                data['kcal'][6]['y'] += userMeals[i]['energy']
+                data['carbohydrate'][6]['y'] += userMeals[i]['carbohydrate']
+                data['protein'][6]['y'] += userMeals[i]['protein']
+                data['fat'][6]['y'] += userMeals[i]['fat']
+                data['fiber'][6]['y'] += userMeals[i]['fiber']
             }
         }
-        console.log('totes:');
-        console.log(totalsPerDay);
+        setisRevealed(true);
+        console.log('here');
+        console.log(data);
 
-        return (
-            <div>
-                {/* <Chart height={500} data={userMeals} forceFit>
-                    <Axis name="Calories/day" label={{ formatter: val => `${val}°C` }} />
-                    <Line position="month*temperature" size={2} color={'city'} />
-                    <Point position="month*temperature" size={4} color={'city'} />
-                </Chart> */}
-            </div>
-        )
+
+        // return (
+        //     <div>
+        //     </div>
+        // )
+    }
+
+    const styles = {
+        chartComponentsContainer: {
+            display: 'grid', gridTemplateColumns: 'max-content 700px', alignItems: 'center'
+        },
+        chartWrapper: { maxWidth: 700, alignSelf: 'flex-start' }
     }
 
     const getWeekMeals = () => {
@@ -121,8 +131,7 @@ export const UserGraphs = () => {
             .then(response => {
                 const result = response.data;
                 console.log(result);
-                setUserMeals(result);
-                parseUserMealData(userMeals);
+                parseUserMealData(result);
             })
             .catch((error) => {
                 setErrorMessage(error.message);
@@ -133,8 +142,28 @@ export const UserGraphs = () => {
 
     return (
         <div>
-            <h1>UserGraphs</h1>
-            <button onClick={() => getWeekMeals()}>See Graph</button>
+            <div>
+                <h1>UserGraphs</h1>
+                <button onClick={() => getWeekMeals()}>See Graph</button>
+            </div>
+            <div style={styles.chartComponentsContainer}>
+                    <div />
+                    {isRevealed && 
+                    <ChartTitle text="test chart title" /> }
+                    {isRevealed && <Label text="text label" rotate />}
+                    <div style={styles.chartWrapper}>
+                        {isRevealed && <LineChart
+                            width={500}
+                            height={300}
+                            data={data.kcal}
+                            horizontalGuides={5}
+                            precision={2}
+                            verticalGuides={1}
+                        />}
+                    </div>
+                    <div />
+                    {isRevealed && <Label text="Days of the Week" />}
+                </div>
         </div>
     )
 
