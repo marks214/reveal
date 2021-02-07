@@ -61,14 +61,16 @@ export const FoodSearch = () => {
       console.log(food.image);
       return (
         <div key={food.id} className='food-list'>
-          <img src={food.image} alt={food.name} />
+          <img className='food-list__food-image' src={food.image} alt={food.name} />
           <h1 className='food-list__food-name'>{food.name}</h1>
-          <p>{food.energy.toFixed(2)} kcal</p>
-          <p>{food.protein.toFixed(2)} g protein</p>
-          <p>{food.carbohydrate.toFixed(2)} g carbohydrate</p>
-          <p>{food.fat.toFixed(2)} g fat</p>
-          <p>{food.fiber.toFixed(2)} g fiber</p>
-          <button onClick={() => addFoodAsMeal(food)}>Add</button>
+          <br/>
+          <h5 className='food-list__food-category'>{food.energy.toFixed(2)} kcal</h5>
+          <h5 className='food-list__food-category'>{food.protein.toFixed(2)} g protein</h5>
+          <h5 className='food-list__food-category'>{food.carbohydrate.toFixed(2)} g carbohydrate</h5>
+          <h5 className='food-list__food-category'>{food.fat.toFixed(2)} g fat</h5>
+          <h5 className='food-list__food-category'>{food.fiber.toFixed(2)} g fiber</h5>
+          <button className='food-list__food-btn' onClick={() => addFoodAsMeal(food)}>Add</button>
+   
         </div>)
     }
   )
@@ -80,13 +82,12 @@ export const FoodSearch = () => {
       <section>
         {foodResult.length > 0 && showFoods}
       </section>
-      {/* <Delete food={food} /> */}
       <hr></hr>
       <div>
         <UserSubmissionForm 
         createFood={createFood} />
       </div>
-      {/* <Link to='/'>Back to foods</Link> */}
+      {/* <h5nk to='/'>Back to foods</Link> */}
     </div>
   )
 }

@@ -31,11 +31,17 @@ export const FoodSearchForm = ({ getFood }) => {
                 className="new-food-form__form"
                 onSubmit={onFormSubmit}>
                 <TextField
+                    style={{
+                        backgroundColor: "cyan"
+                    }}
                     placeholder="Search for a food..."
                     value={food.name}
                     type='text'
                     onChange={onInputChange}
                     InputProps={{
+                        style: {
+                            color: "black"
+                        },
                         startAdornment: (
                             <InputAdornment>
                                 <IconButton>
