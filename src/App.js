@@ -26,6 +26,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
 function App() {
 
+  const backend_url = 'http://flask-env.eba-rgp3w2yt.us-west-1.elasticbeanstalk.com/'
   return (
     <div className="App">
       <div className="container">
@@ -48,7 +49,7 @@ function App() {
           </div>
           <Switch>
             <Route exact path='/login'>
-              <Login />
+              <Login url={backend_url} />
             </Route>
             <Route exact path='/home'>
               <Home />

@@ -7,7 +7,8 @@ import './UserGraphs.css'
 
 let data = {}
 
-export const UserGraphs = () => {
+export const UserGraphs = ({ backend_url }) => {
+    
     const [errorMessage, setErrorMessage] = useState(null);
     // const [userMeals, setUserMeals] = useState([]);
     const [isRevealed, setisRevealed] = useState(false);
@@ -127,7 +128,7 @@ export const UserGraphs = () => {
     }
 
     const getWeekMeals = () => {
-        axios.get(`/api/meals_week`)
+        axios.get(`${backend_url}/api/meals_week`)
             .then(response => {
                 const result = response.data;
                 console.log(result);

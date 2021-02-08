@@ -11,13 +11,14 @@ import { UserSubmissionForm } from '../Components/UserSubmissionForm'
 
 
 export const FoodSearch = () => {
+  const backend_url = 'http://flask-env.eba-rgp3w2yt.us-west-1.elasticbeanstalk.com/'
   // const { food } = useParams();
   const [foodResult, setFoodResult] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
   const [meal, setMeal] = useState(null);
 
   const getFood = (food) => {
-    axios.get(`/api/food/${food}`)
+    axios.get(`${backend_url}/api/food/${food}`)
       .then(response => {
         const result = response.data;
         console.log(result);
@@ -31,7 +32,7 @@ export const FoodSearch = () => {
 
   const addFoodAsMeal = (selectedFood) => {
     console.log(selectedFood);
-    axios.post(`/api/meal`, selectedFood)
+    axios.post(`${backend_url}/api/meal`, selectedFood)
       .then((response) => {
       console.log(`added ${selectedFood} as meal`);
       const result = response.data;
@@ -45,7 +46,7 @@ export const FoodSearch = () => {
   }
 
   const createFood = (newFood) => {
-    axios.post(`/api/food/${newFood}`, newFood)
+    axios.post(`${backend_url}/api/food/${newFood}`, newFood)
     .then((response) => {
       const updatedFoodData = response.data;
       setFoodResult(updatedFoodData);

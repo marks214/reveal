@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import {createAuthProvider} from 'react-token-auth';
 import {login, authFetch, useAuth, logout} from "../auth"
 
-export const Login = () => {
+export const Login = ({ url }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
   
@@ -17,7 +17,7 @@ export const Login = () => {
         'password': password
       }
       console.log(opts)
-      fetch('/api/login', {
+      fetch(`${url}/api/login`, {
         method: 'post',
         body: JSON.stringify(opts)
       }).then(r => r.json())

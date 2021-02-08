@@ -6,9 +6,10 @@ import './MealLog.css'
 export const MealLog = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [userMeals, setUserMeals] = useState([]);
+  const backend_url = 'http://flask-env.eba-rgp3w2yt.us-west-1.elasticbeanstalk.com/'
 
   useEffect(() => {
-    axios.get(`/api/meal`)
+    axios.get(`${backend_url}/api/meal`)
       .then(response => {
         const result = response.data;
         console.log(result);
@@ -22,7 +23,7 @@ export const MealLog = () => {
 
 
   const deleteMeal = (meal) => {
-    axios.post(`/api/delete_meal`, meal)
+    axios.post(`${backend_url}/api/delete_meal`, meal)
     .then((response) => {
       const result = response.data;
       console.log(result);
@@ -58,7 +59,7 @@ export const MealLog = () => {
       </div>
       <hr></hr>
       <div>
-        <UserGraphs userMeals={userMeals}/>
+        <UserGraphs userMeals={userMeals} backend_url={backend_url}/>
       </div>
     </div>
   )
