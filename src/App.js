@@ -1,28 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import "bootswatch/dist/sketchy/bootstrap.min.css";
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import { BrowserRouter as Router, Link, Switch, Route, Redirect } from 'react-router-dom';
 import { Home } from './Pages/Home'
 import { FoodSearch } from './Pages/FoodSearch'
-import { Login } from './Components/Login'
 import { MealLog } from './Pages/MealLog'
 import axios from 'axios';
 import logo from './RangeRevealLogo.svg';
 import './App.css';
-import { login, authFetch, useAuth, logout } from "./auth"
 // import { Logo } from './Components/Logo'
-
+import Amplify, { Auth } from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 // login, thanks to: https://yasoob.me/posts/how-to-setup-and-deploy-jwt-auth-using-react-and-flask/
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  const [logged] = useAuth();
-
-  return <Route {...rest} render={(props) => (
-    logged
-      ? <Component {...props} />
-      : <Redirect to='/login' />
-  )} />
-}
 
 function App() {
 
@@ -44,12 +36,12 @@ function App() {
                 <Navbar.Brand><Link className="App-link" to="/search">FOOD SEARCH</Link></Navbar.Brand>
                 <Navbar.Brand><Link className="App-link" to="/data">DATA</Link></Navbar.Brand>
                 <Navbar.Brand><Link className="App-link" to="/about">ABOUT</Link></Navbar.Brand>
-                <Navbar.Brand className='ml-auto'><Link className="App-link" to='/login'>Login</Link></Navbar.Brand>
+                <Navbar.Brand className='ml-auto'><Link className="App-link" to='/logout'>Logout</Link></Navbar.Brand>
             </Navbar>
           </div>
           <Switch>
-            <Route exact path='/login'>
-              <Login url={backend_url} />
+            <Route exact path='/logout'>
+              <AmplifySignOut />
             </Route>
             <Route exact path='/home'>
               <Home />
@@ -57,8 +49,12 @@ function App() {
             <Route exact path="/about">
               <p>about page placeholder</p>
             </Route>
-            <PrivateRoute exact path="/data" component={MealLog} />
-            <PrivateRoute path="/search" component={FoodSearch} />
+            <Route exact path="/data">
+              <MealLog/>
+              </Route>
+            <Route path="/search">
+              <FoodSearch />
+              </Route>
           </Switch>
         </Router>
       </header>
@@ -66,4 +62,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
