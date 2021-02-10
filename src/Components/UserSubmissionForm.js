@@ -28,10 +28,10 @@ export const UserSubmissionForm = ({ createFood }) => {
     const onFormSubmit = (event) => {
         event.preventDefault();
         createFood(newFood);
-        setNewFood(initState);
         <FlashMessage duration={50000} persistOnHover={true}>
             <p>{newFood.name} has been added!</p>
         </FlashMessage>
+        setNewFood(initState);
     }
 
     return (

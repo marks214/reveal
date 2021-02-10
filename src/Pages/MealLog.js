@@ -6,7 +6,7 @@ import './MealLog.css'
 export const MealLog = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [userMeals, setUserMeals] = useState([]);
-  const backend_url = 'https://rangereveal.aimeeoz.com'
+  const backend_url = 'http://localhost:5000'//'https://rangereveal.aimeeoz.com'
 
   useEffect(() => {
     axios.get(`${backend_url}/api/meal`)

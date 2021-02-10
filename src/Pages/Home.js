@@ -1,17 +1,19 @@
 import React, {useState, useEffect} from 'react';
+import { UserProfile } from '../Components/UserProfile'
 import axios from 'axios';
 
 export const Home = () => {
-    const [greeting, setGreeting] = useState([]);
+    const [userData, setUserData] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
-  
+    const backend_url = 'http://localhost:5000' //'https://rangereveal.aimeeoz.com'
+    
     useEffect(() => {
-      axios.get('/')
+      axios.get(`${backend_url}/api/curr_user`)
         .then(response => {
           const result = response.data;
           console.log(result);
           console.log(response.status)
-          setGreeting(result);
+          setUserData(result);
         })
         .catch((error) => {
           setErrorMessage(error.message);
@@ -21,8 +23,9 @@ export const Home = () => {
 
     return (
         <div>
-            {greeting.name}
+            {userData}
             <hr></hr>
+            <UserProfile userData={userData}/>
         </div>
     )
 }

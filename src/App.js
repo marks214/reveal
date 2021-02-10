@@ -14,11 +14,11 @@ import './App.css';
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from './aws-exports';
 Amplify.configure(awsconfig);
-// login, thanks to: https://yasoob.me/posts/how-to-setup-and-deploy-jwt-auth-using-react-and-flask/
+
 
 function App() {
 
-  const backend_url = 'https://rangereveal.aimeeoz.com'
+  const backend_url = 'http://localhost:5000' //'https://rangereveal.aimeeoz.com'
   return (
     <div className="App">
       <div className="container">

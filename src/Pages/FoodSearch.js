@@ -11,7 +11,7 @@ import { UserSubmissionForm } from '../Components/UserSubmissionForm'
 
 
 export const FoodSearch = () => {
-  const backend_url = 'https://rangereveal.aimeeoz.com'
+  const backend_url = 'http://localhost:5000' //'https://rangereveal.aimeeoz.com'
   // const { food } = useParams();
   const [foodResult, setFoodResult] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
