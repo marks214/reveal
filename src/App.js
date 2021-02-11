@@ -7,6 +7,8 @@ import { Home } from './Pages/Home'
 import { FoodSearch } from './Pages/FoodSearch'
 import { Login } from './Components/Login'
 import { MealLog } from './Pages/MealLog'
+import { About } from './Pages/About'
+import { UserProfile } from './Components/UserProfile'
 import axios from 'axios';
 import logo from './RangeRevealLogo.svg';
 import './App.css';
@@ -43,19 +45,17 @@ function App() {
                 <Navbar.Brand><Link className="App-link" to="/search">FOOD SEARCH</Link></Navbar.Brand>
                 <Navbar.Brand><Link className="App-link" to="/data">DATA</Link></Navbar.Brand>
                 <Navbar.Brand><Link className="App-link" to="/about">ABOUT</Link></Navbar.Brand>
-                <Navbar.Brand className='ml-auto'><Link className="App-link" to='/login'>Login</Link></Navbar.Brand>
+                {/* <Navbar.Brand className='ml-auto'><Link className="App-link" to='/login'>Login</Link></Navbar.Brand> */}
             </Navbar>
           </div>
           <Switch>
             <Route exact path='/login'>
               <Login />
             </Route>
-            <Route exact path='/home'>
-              <Home />
-            </Route>
             <Route exact path="/about">
-              <p>about page placeholder</p>
+              <About />
             </Route>
+            <PrivateRoute exact path='/home' component={Home}/>
             <PrivateRoute exact path="/data" component={MealLog} />
             <PrivateRoute path="/search" component={FoodSearch} />
           </Switch>

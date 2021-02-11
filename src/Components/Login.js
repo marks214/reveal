@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import {createAuthProvider} from 'react-token-auth';
 import {login, authFetch, useAuth, logout} from "../auth"
+import { UserProfile } from './UserProfile'
 
 export const Login = () => {
     const [username, setUsername] = useState('')
@@ -44,6 +45,7 @@ export const Login = () => {
       <div>
         {!logged? <form action="#">
           <div>
+            <h1>Welcome to Range Reveal!</h1>
           <h2>Login</h2>
             <input type="text" 
               placeholder="Username" 
@@ -63,7 +65,11 @@ export const Login = () => {
             Login Now
           </button>
         </form>
-        : <button onClick={() => logout()}>Logout</button>}
+        :
+        <div>
+        <UserProfile/>
+        <button onClick={() => logout()}>Logout</button>
+        </div>}
       </div>
     )
   }
