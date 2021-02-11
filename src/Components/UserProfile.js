@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import FlashMessage from 'react-flash-message';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import './UserSubmissionForm.css'
+import './UserProfile.css'
 
 export const UserProfile = ({ userData }) => {
     const backend_url = 'http://localhost:5000' //'https://rangereveal.aimeeoz.com'
@@ -62,96 +62,108 @@ export const UserProfile = ({ userData }) => {
                     {console.log('userProfile')}
                     {console.log(userData)}
                     {console.log(userGoals)}
+                    <ul>
+                        <li>
                     <label/> Energy Min:
                     <input
                         name='energy_min'
-                        placeholder={userData ? `${userData.energy_min} kcal`: '0 kcal'}
+                        placeholder={userData ? `${userData.energy_min} kcal`: '1800 kcal'}
                         value={userGoals.energy_min}
                         type='text'
                         onChange={onInputChange}
-                        required
                     />
+                    </li>
+                    <li>
                     <label/> Energy Max:
                     <input
                         name='energy_max'
-                        placeholder={userData ? `${userData.energy_max} kcal` : '0 kcal'}
+                        placeholder={userData ? `${userData.energy_max} kcal` : '3000 kcal'}
                         value={userGoals.energy_max}
                         type='text'
                         onChange={onInputChange}
-                        required
                     />
+                    </li>
+                    <li>
                     <label/> Protein Min:
                     <input
                         name='protein_min'
-                        placeholder={userData ? `${userData.protein_min} g` : '0 g'}
+                        placeholder={userData ? `${userData.protein_min} g` : '45 g'}
                         value={userGoals.protein_min}
                         type='text'
                         onChange={onInputChange}
-                        required
                     />
+                    </li>
+                    <li>
                     <label/> Protein Max:
                     <input
                         name='protein_max'
-                        placeholder={userData ? `${userData.protein_max} g` : '0 g'}
+                        placeholder={userData ? `${userData.protein_max} g` : '150 g'}
                         value={userGoals.protein_max}
                         type='text'
                         onChange={onInputChange}
-                        required
                     />
+                    </li>
+                    <li>
                     <label/> Carb Min:
                     <input
                         name='carb_min'
-                        placeholder={userData ? `${userData.carb_min} g` : '0 g'}
+                        placeholder={userData ? `${userData.carb_min} g` : '20 g'}
                         value={userGoals.carb_min}
                         type='text'
                         onChange={onInputChange}
-                        required
                     />
+                    </li>
+                    <li>
                     <label/> Carb Max:
                     <input
                         name='carb_max'
-                        placeholder={userData ? `${userData.carb_max} g` : '0 g'}
+                        placeholder={userData ? `${userData.carb_max} g` : '80 g'}
                         value={userGoals.carb_max}
                         type='text'
                         onChange={onInputChange}
-                        required
                     />
+                    </li>
+                    <li>
                     <label/> Fat Min:
                     <input
                         name='fat_min'
-                        placeholder={userData ? `${userData.fat_min} g` : '0 g'}
+                        placeholder={userData ? `${userData.fat_min} g` : '20 g'}
                         value={userGoals.fat_min}
                         type='text'
                         onChange={onInputChange}
-                        required
                     />
+                    </li>
+                    <li>
                     <label/> Fat Max:
                     <input
                         name='fat_max'
-                        placeholder={userData ? `${userData.fat_max} g` : '0 g'}
+                        placeholder={userData ? `${userData.fat_max} g` : '70 g'}
                         value={userGoals.fat_max}
                         type='text'
                         onChange={onInputChange}
-                        required
                     />
+                    </li>
+                    <li>
                     <label/> Fiber Min:
                     <input
                         name='fiber_min'
-                        placeholder={userData ? `${userData.fiber_min} g` : '0 g'}
+                        placeholder={userData ? `${userData.fiber_min} g` : '25 g'}
                         value={userGoals.fiber_min}
                         type='text'
                         onChange={onInputChange}
-                        required
                     />
+                    </li>
+                    <li>
                     <label/> Fiber Max:
                     <input
                         name='fiber_max'
-                        placeholder={userData ? `${userData.fiber_max} g` : '0 g'}
+                        placeholder={userData ? `${userData.fiber_max} g` : '50 g'}
                         value={userGoals.fiber_max}
                         type='text'
                         onChange={onInputChange}
-                        required
                     />
+                    </li>
+                    </ul>
                 </div>
                 <div className="UserSubmissionForm__submit">
                     <input

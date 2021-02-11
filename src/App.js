@@ -8,10 +8,9 @@ import { Home } from './Pages/Home'
 import { FoodSearch } from './Pages/FoodSearch'
 import { MealLog } from './Pages/MealLog'
 import axios from 'axios';
-import logo from './RangeRevealLogo.svg';
 import './App.css';
 import { Login } from './Components/Login'
-import { LoginTry } from './Components/LoginTry'
+import { isLogin } from './utils/index';
 
 
 function App() {
@@ -19,11 +18,6 @@ function App() {
   const backend_url = 'http://localhost:5000' //'https://rangereveal.aimeeoz.com'
   return (
     <div className="App">
-      <div className="container">
-        <div className="text">
-          {/* <Logo /> */}
-        </div>
-      </div>
       <header className="App-header">
         <Router>
           <div>
@@ -43,7 +37,7 @@ function App() {
               return null;
             }}> */}
             <Route exact path='/login' >
-              <LoginTry/> 
+              <Login/> 
             </Route>
             <Route exact path='/logout'>
               {/* <AmplifySignOut /> */}
