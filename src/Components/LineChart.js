@@ -112,7 +112,8 @@ const LineChart = ({
                     style={{
                         fill: "#808080",
                         fontSize: FONT_SIZE,
-                        fontFamily: "Helvetica"
+                        fontFamily: "Helvetica",
+                        color: "cyan"
                     }}
                 >
                     {element.label}
@@ -137,7 +138,8 @@ const LineChart = ({
                     style={{
                         fill: "#808080",
                         fontSize: FONT_SIZE,
-                        fontFamily: "Helvetica"
+                        fontFamily: "Helvetica",
+                        color: "cyan"
                     }}
                 >
                     {parseFloat(maximumYFromData * (index / PARTS)).toFixed(precision)}
@@ -149,7 +151,7 @@ const LineChart = ({
     return (
         <svg
             viewBox={`0 0 ${width} ${height}`}
-        //style={{ border: "0.5px solid #ccc" }}
+        // style={{ border: "0.5px solid #ccc" }}
         >
             <XAxis />
             <LabelsXAxis />
@@ -160,7 +162,7 @@ const LineChart = ({
 
             <polyline
                 fill="none"
-                stroke="#0074d9"
+                stroke="magenta"
                 strokeWidth={STROKE}
                 points={points}
             />

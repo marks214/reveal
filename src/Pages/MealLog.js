@@ -45,19 +45,20 @@ export const MealLog = () => {
           <p>{meal.fat.toFixed(2)} g fat</p>
           <p>{meal.fiber.toFixed(2)} g fiber</p>
           <p>recorded at: {meal.time}</p>
-          <button onClick={() => deleteMeal(meal)}>Delete</button>
+          <button className='meal-list__meal-btn' onClick={() => deleteMeal(meal)}>Delete</button>
+          <hr></hr>
         </div>)
     }
   )
 
   return (
-    <div>
-      <div>
+    <div className='row'>
+      <div className='column'>
         {console.log(userMeals.length)}
         {userMeals.length > 0 && showMeals}
       </div>
       <hr></hr>
-      <div>
+      <div className='column'>
         <UserGraphs userMeals={userMeals}/>
       </div>
     </div>

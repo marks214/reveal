@@ -40,10 +40,14 @@ export const FoodSearchForm = ({ getFood }) => {
                     onChange={onInputChange}
                     InputProps={{
                         style: {
-                            color: "black"
+                            color: "black",
+                            marginBottom: "10px"
                         },
                         startAdornment: (
-                            <InputAdornment>
+                            <InputAdornment
+                            style={{
+                                marginBottom: "25px"
+                            }}>
                                 <IconButton>
                                     <SearchIcon />
                                 </IconButton>

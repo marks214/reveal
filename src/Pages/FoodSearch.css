@@ -2,6 +2,23 @@
     box-sizing: border-box;
   }
 
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+  
+  /* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+li {
+    list-style: none;
+    margin: 0 0 10px 0;
+}
 .food-list {
     width: auto;
     float: left;
@@ -16,7 +33,7 @@
     width: auto;
     float: left;
     padding: auto;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 
     /* margin-left: 200px;
     text-align: justify;
@@ -34,21 +51,30 @@
 }
 
 .food-list__food-category {
-    width: 25%;
+    /* width: 25%;
     float: left;
     padding: 15px;
-    border: 1px solid red;
+    border: 1px solid red; */
     /* margin-left: 200px; */
+    width: auto;
+    /* float: left; */
+    padding: auto;
+    margin: 0 0 10px 0;
     color: whitesmoke;
-    list-style: none;
-    text-align: justify;
-    text-justify: inter-word;
+    text-align: right;
 }
 
 .food-list__food-btn {
     width: 25%;
-    float: left;
+    float: right;
     padding: 15px;
-    border: 1px solid red;
+    color: black;
+    background-color: bisque;
+    border: 1px solid rgb(0, 208, 255);
     /* margin-right: 815px; */
+}
+
+.food-list__food-btn:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
 }

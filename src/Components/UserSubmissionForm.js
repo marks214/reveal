@@ -67,7 +67,7 @@ export const UserSubmissionForm = ({ createFood }) => {
                     />
                     <input
                         name='carbohydrate'
-                        placeholder='grams of carbohydrate'
+                        placeholder='grams of carbs'
                         value={newFood.carbohydrate}
                         type='text'
                         onChange={onInputChange}
@@ -93,7 +93,7 @@ export const UserSubmissionForm = ({ createFood }) => {
                 <div className="UserSubmissionForm__submit">
                     <input
                         type="submit"
-                        value="Add Food"
+                        value="Create Food"
                         className="UserSubmissionForm__submit-btn"/>
                 </div>
             </form>

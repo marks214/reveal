@@ -5,7 +5,8 @@ const style = {
   display: "inline-block",
   width: '100%',
   textAlign: 'center',
-  color: "#808080",
+  color: "white",
+  boxSizing: "border-box"
 };
 
 const rotateStyles = {
@@ -13,7 +14,8 @@ const rotateStyles = {
   width: 35,
   transformOrigin: "center",
   marginTop: 50,
-  marginRight: 20
+  marginRight: 20,
+  boxSizing: "border-box"
 
 }
 
