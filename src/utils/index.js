@@ -1,19 +1,13 @@
-// https://github.com/thanhbinhtran93/react-router-example/blob/master/src/utils/index.js
+// https://github.com/yasoob/Flask-React-JWT/blob/master/src/auth/index.js
+import {createAuthProvider} from 'react-token-auth';
 
-const TOKEN_KEY = 'jwt';
 
-export const login = () => {
-    localStorage.setItem(TOKEN_KEY, 'TestLogin');
-}
-
-export const logout = () => {
-    localStorage.removeItem(TOKEN_KEY);
-}
-
-export const isLogin = () => {
-    if (localStorage.getItem(TOKEN_KEY)) {
-        return true;
-    }
-
-    return false;
-}
+export const [useAuth, authFetch, login, logout] =
+    createAuthProvider({
+        accessTokenKey: 'access_token',
+        onUpdateToken: (token) => fetch('/api/refresh', {
+            method: 'POST',
+            body: token.access_token
+        })
+        .then(r => r.json())
+    });

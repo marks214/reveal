@@ -64,7 +64,7 @@ export const UserProfile = ({ userData }) => {
                     {console.log(userGoals)}
                     <ul>
                         <li>
-                    <label/> Energy Min:
+                    <label/>Energy Min&nbsp;&nbsp;
                     <input
                         name='energy_min'
                         placeholder={userData ? `${userData.energy_min} kcal`: '1800 kcal'}
@@ -74,7 +74,7 @@ export const UserProfile = ({ userData }) => {
                     />
                     </li>
                     <li>
-                    <label/> Energy Max:
+                    <label/>Energy Max&nbsp;&nbsp;
                     <input
                         name='energy_max'
                         placeholder={userData ? `${userData.energy_max} kcal` : '3000 kcal'}
@@ -84,7 +84,7 @@ export const UserProfile = ({ userData }) => {
                     />
                     </li>
                     <li>
-                    <label/> Protein Min:
+                    <label/>Protein Min&nbsp;&nbsp;
                     <input
                         name='protein_min'
                         placeholder={userData ? `${userData.protein_min} g` : '45 g'}
@@ -94,7 +94,7 @@ export const UserProfile = ({ userData }) => {
                     />
                     </li>
                     <li>
-                    <label/> Protein Max:
+                    <label/>Protein Max&nbsp;&nbsp;
                     <input
                         name='protein_max'
                         placeholder={userData ? `${userData.protein_max} g` : '150 g'}
@@ -104,7 +104,7 @@ export const UserProfile = ({ userData }) => {
                     />
                     </li>
                     <li>
-                    <label/> Carb Min:
+                    <label/>Carb Min&nbsp;&nbsp;
                     <input
                         name='carb_min'
                         placeholder={userData ? `${userData.carb_min} g` : '20 g'}
@@ -124,7 +124,7 @@ export const UserProfile = ({ userData }) => {
                     />
                     </li>
                     <li>
-                    <label/> Fat Min:
+                    <label/>Fat Min&nbsp;&nbsp;
                     <input
                         name='fat_min'
                         placeholder={userData ? `${userData.fat_min} g` : '20 g'}
@@ -134,7 +134,7 @@ export const UserProfile = ({ userData }) => {
                     />
                     </li>
                     <li>
-                    <label/> Fat Max:
+                    <label/> Fat Max&nbsp;&nbsp;
                     <input
                         name='fat_max'
                         placeholder={userData ? `${userData.fat_max} g` : '70 g'}
@@ -144,7 +144,7 @@ export const UserProfile = ({ userData }) => {
                     />
                     </li>
                     <li>
-                    <label/> Fiber Min:
+                    <label/> Fiber Min&nbsp;&nbsp;
                     <input
                         name='fiber_min'
                         placeholder={userData ? `${userData.fiber_min} g` : '25 g'}
@@ -154,7 +154,7 @@ export const UserProfile = ({ userData }) => {
                     />
                     </li>
                     <li>
-                    <label/> Fiber Max:
+                    <label/> Fiber Max&nbsp;&nbsp;
                     <input
                         name='fiber_max'
                         placeholder={userData ? `${userData.fiber_max} g` : '50 g'}

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import { UserProfile } from '../Components/UserProfile'
+import { Login } from '../Components/Login'
 import axios from 'axios';
+import './Home.css'
 
 export const Home = () => {
     const [userData, setUserData] = useState([]);
@@ -24,8 +25,7 @@ export const Home = () => {
     return (
         <div>
             {userData}
-            <hr></hr>
-            <UserProfile userData={userData}/>
+            <Login />
         </div>
     )
 }

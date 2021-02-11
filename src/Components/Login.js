@@ -32,34 +32,10 @@ export const Login = () => {
             </div>
         </div>
     ) : (
-            <AmplifyAuthenticator />
+            <div>
+                <h1>Welcome to Range Reveal!</h1>
+                <AmplifyAuthenticator />
+            </div>
         );
 }
-
-
-// export const LoginTry = () => {
-//     const [isLoggedIn, setIsLoggedIn] = useState(false)
-
-//     const loggedIn = () => {
-//         const federatedInfo = Cache.getItem('federatedInfo');
-//         const { token } = federatedInfo;
-//         console.log(token);
-//         console.log('here')
-//     }
-
-//     return(
-//     <div>
-//       <AmplifyAuthenticator>
-//       {!isLoggedIn &&
-//         <AmplifySignIn 
-//         headerText='Range Reveal'
-//         onSubmit={console.log('here')}/>
-//         }
-//     {isLoggedIn && 
-//     <AmplifySignOut
-//     onClick={() => setIsLoggedIn(false)}/>}
-//       </AmplifyAuthenticator> 
-//     </div>
-//     )
-// };
 

@@ -32,7 +32,9 @@ export const FoodSearchForm = ({ getFood }) => {
                 onSubmit={onFormSubmit}>
                 <TextField
                     style={{
-                        backgroundColor: "cyan"
+                        backgroundColor: "cyan",
+                        padding: "15px",
+                        margin: "5px"
                     }}
                     placeholder="Search for a food..."
                     value={food.name}
@@ -40,10 +42,14 @@ export const FoodSearchForm = ({ getFood }) => {
                     onChange={onInputChange}
                     InputProps={{
                         style: {
-                            color: "black"
+                            color: "black",
+                            marginBottom: "10px"
                         },
                         startAdornment: (
-                            <InputAdornment>
+                            <InputAdornment
+                            style={{
+                                marginBottom: "25px"
+                            }}>
                                 <IconButton>
                                     <SearchIcon />
                                 </IconButton>
