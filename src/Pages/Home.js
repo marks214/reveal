@@ -3,7 +3,7 @@ import { UserProfile } from '../Components/UserProfile'
 import axios from 'axios';
 
 export const Home = () => {
-    const [userData, setUserData] = useState(null);
+    const [userData, setUserData] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
     const backend_url = 'http://localhost:5000' //'https://rangereveal.aimeeoz.com'
     
@@ -13,7 +13,7 @@ export const Home = () => {
           const result = response.data;
           console.log(result);
           console.log(response.status)
-          setUserData(result);
+          // setUserData(result);
         })
         .catch((error) => {
           setErrorMessage(error.message);

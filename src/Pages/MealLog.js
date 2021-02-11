@@ -3,7 +3,7 @@ import axios from 'axios';
 import { UserGraphs } from './UserGraphs'
 import './MealLog.css'
 
-export const MealLog = () => {
+export const MealLog = ({ userName }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [userMeals, setUserMeals] = useState([]);
   const backend_url = 'http://localhost:5000'//'https://rangereveal.aimeeoz.com'
