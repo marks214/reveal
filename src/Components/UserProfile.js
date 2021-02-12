@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import './UserProfile.css'
 
-export const UserProfile = ({ userData }) => {
+export const UserProfile = () => {
     const backend_url = 'http://localhost:5000' //'https://rangereveal.aimeeoz.com'
     const initState = {
         energy_min: '',
@@ -31,7 +31,8 @@ export const UserProfile = ({ userData }) => {
     }
     const updateGoals = (userGoals) => {
         console.log(userGoals);
-        axios.post(`${backend_url}/api/curr_user`, userGoals)
+        // hard-coded as AIMEE (user_id = 1)
+        axios.post(`http://localhost:5000/api/user/1`, userGoals)
           .then((response) => {
           console.log(`added ${userGoals}`);
           const result = response.data;
@@ -43,8 +44,23 @@ export const UserProfile = ({ userData }) => {
         })
       }
 
+    useEffect(() => {
+        axios.get('http://localhost:5000/api/user/1') //hardcoded as Aimee
+        .then(response => {
+          const result = response.data;
+          console.log(result);
+          console.log(response.status)
+          setUserGoals(result);
+        })
+        .catch((error) => {
+          setErrorMessage(error.message);
+          console.log(errorMessage);
+        });
+    }, [])
+
     const onFormSubmit = (event) => {
         event.preventDefault();
+        console.log('form was submitted');
         updateGoals(userGoals);
         <FlashMessage duration={50000} persistOnHover={true}>
             <p>#goals</p>
@@ -54,20 +70,19 @@ export const UserProfile = ({ userData }) => {
 
     return (
         <div>
-            <h6>#GOALS</h6>
+            <h5>#GOALS</h5>
             <form
                 className="new-newFood-form__form"
                 onSubmit={onFormSubmit}>
                 <div className="UserSubmissionForm__food-inputs">
                     {console.log('userProfile')}
-                    {console.log(userData)}
                     {console.log(userGoals)}
                     <ul>
                         <li>
                     <label/>Energy Min&nbsp;&nbsp;
                     <input
                         name='energy_min'
-                        placeholder={userData ? `${userData.energy_min} kcal`: '1800 kcal'}
+                        placeholder={typeof userGoals.energy_min === 'number' ? `${userGoals.energy_min} kcal`: '1800 kcal'}
                         value={userGoals.energy_min}
                         type='text'
                         onChange={onInputChange}
@@ -77,7 +92,7 @@ export const UserProfile = ({ userData }) => {
                     <label/>Energy Max&nbsp;&nbsp;
                     <input
                         name='energy_max'
-                        placeholder={userData ? `${userData.energy_max} kcal` : '3000 kcal'}
+                        placeholder={typeof userGoals.energy_max === 'number'  ? `${userGoals.energy_max} kcal` : '3000 kcal'}
                         value={userGoals.energy_max}
                         type='text'
                         onChange={onInputChange}
@@ -87,7 +102,7 @@ export const UserProfile = ({ userData }) => {
                     <label/>Protein Min&nbsp;&nbsp;
                     <input
                         name='protein_min'
-                        placeholder={userData ? `${userData.protein_min} g` : '45 g'}
+                        placeholder={typeof userGoals.protein_min === 'number'  ? `${userGoals.protein_min} g` : '45 g'}
                         value={userGoals.protein_min}
                         type='text'
                         onChange={onInputChange}
@@ -97,7 +112,7 @@ export const UserProfile = ({ userData }) => {
                     <label/>Protein Max&nbsp;&nbsp;
                     <input
                         name='protein_max'
-                        placeholder={userData ? `${userData.protein_max} g` : '150 g'}
+                        placeholder={typeof userGoals.protein_max === 'number'  ? `${userGoals.protein_max} g` : '150 g'}
                         value={userGoals.protein_max}
                         type='text'
                         onChange={onInputChange}
@@ -107,7 +122,7 @@ export const UserProfile = ({ userData }) => {
                     <label/>Carb Min&nbsp;&nbsp;
                     <input
                         name='carb_min'
-                        placeholder={userData ? `${userData.carb_min} g` : '20 g'}
+                        placeholder={typeof userGoals.carb_min === 'number'  ? `${userGoals.carb_min} g` : '20 g'}
                         value={userGoals.carb_min}
                         type='text'
                         onChange={onInputChange}
@@ -117,7 +132,7 @@ export const UserProfile = ({ userData }) => {
                     <label/> Carb Max:
                     <input
                         name='carb_max'
-                        placeholder={userData ? `${userData.carb_max} g` : '80 g'}
+                        placeholder={typeof userGoals.carb_max === 'number'  ? `${userGoals.carb_max} g` : '80 g'}
                         value={userGoals.carb_max}
                         type='text'
                         onChange={onInputChange}
@@ -127,7 +142,7 @@ export const UserProfile = ({ userData }) => {
                     <label/>Fat Min&nbsp;&nbsp;
                     <input
                         name='fat_min'
-                        placeholder={userData ? `${userData.fat_min} g` : '20 g'}
+                        placeholder={typeof userGoals.fat_min === 'number'  ? `${userGoals.fat_min} g` : '20 g'}
                         value={userGoals.fat_min}
                         type='text'
                         onChange={onInputChange}
@@ -137,7 +152,7 @@ export const UserProfile = ({ userData }) => {
                     <label/> Fat Max&nbsp;&nbsp;
                     <input
                         name='fat_max'
-                        placeholder={userData ? `${userData.fat_max} g` : '70 g'}
+                        placeholder={typeof userGoals.fat_max === 'number'  ? `${userGoals.fat_max} g` : '70 g'}
                         value={userGoals.fat_max}
                         type='text'
                         onChange={onInputChange}
@@ -147,7 +162,7 @@ export const UserProfile = ({ userData }) => {
                     <label/> Fiber Min&nbsp;&nbsp;
                     <input
                         name='fiber_min'
-                        placeholder={userData ? `${userData.fiber_min} g` : '25 g'}
+                        placeholder={typeof userGoals.fiber_min === 'number'  ? `${userGoals.fiber_min} g` : '25 g'}
                         value={userGoals.fiber_min}
                         type='text'
                         onChange={onInputChange}
@@ -157,7 +172,7 @@ export const UserProfile = ({ userData }) => {
                     <label/> Fiber Max&nbsp;&nbsp;
                     <input
                         name='fiber_max'
-                        placeholder={userData ? `${userData.fiber_max} g` : '50 g'}
+                        placeholder={typeof userGoals.fiber_max === 'number'  ? `${userGoals.fiber_max} g` : '50 g'}
                         value={userGoals.fiber_max}
                         type='text'
                         onChange={onInputChange}

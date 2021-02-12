@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { FoodSearchForm } from '../Components/FoodSearchForm';
-// import { Delete } from '../Components/Delete'
 import {
   useParams,
   Link
