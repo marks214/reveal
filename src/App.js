@@ -24,8 +24,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   )} />
 }
 
-const App = ({ }) => {
-  const [userName, setUserName] = useState(null);
+const App = () => {
+  const [currUser, setCurrUser] = useState(null);
   const backend_url = 'http://localhost:5000' //'https://rangereveal.aimeeoz.com'
   return (
     <div className="App">
@@ -47,35 +47,50 @@ const App = ({ }) => {
               window.location.href = 'http://localhost:5000/api/sign_in';
               return null;
             }}> */}
+            {!currUser &&
             <Route exact path='/home' >
-              <Home/> 
-            </Route>
+              <Login setCurrUser={setCurrUser}/> 
+            </Route>}
+            {currUser &&
+            <Route exact path='/home' >
+              <Home currUser={currUser}/> 
+            </Route>}
             <Route exact path="/about">
               <About />
             </Route>
+            {!currUser &&
+            <Route exact path="/data">
+              <Login setCurrUser={setCurrUser}/> 
+              </Route>}
+            {currUser &&
             <Route exact path="/data">
               <MealLog/>
-              </Route> 
+              </Route>}
+            {!currUser &&
+            <Route exact path="/search">
+              <Login setCurrUser={setCurrUser}/> 
+            </Route>}
+            {currUser &&
             <Route exact path="/search">
               <FoodSearch />
-            </Route>
+            </Route>}
           </Switch>
         </Router>
       </header>
     </div>
   );
 
-  function Child() {
-    let { username } = useParams();
-    setUserName(username);
-    console.log('here')
-    console.log(userName)
-    return (
-      <div>{console.log(userName)}</div>
-    )
+  // function Child() {
+  //   let { username } = useParams();
+  //   setUserName(username);
+  //   console.log('here')
+  //   console.log(userName)
+  //   return (
+  //     <div>{console.log(userName)}</div>
+  //   )
     
 
-  }
+  // }
 }
 
 export default App;

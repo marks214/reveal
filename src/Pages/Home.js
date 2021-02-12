@@ -3,7 +3,7 @@ import { Login } from '../Components/Login'
 import axios from 'axios';
 import './Home.css'
 
-export const Home = () => {
+export const Home = ({ setCurrUser }) => {
     const [userData, setUserData] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
     const backend_url = 'http://localhost:5000' //'https://rangereveal.aimeeoz.com'
@@ -25,7 +25,7 @@ export const Home = () => {
     return (
         <div>
             {userData}
-            <Login />
+            <Login setCurrUser={setCurrUser}/>
         </div>
     )
 }
