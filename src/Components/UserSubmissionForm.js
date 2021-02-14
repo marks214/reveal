@@ -36,7 +36,7 @@ export const UserSubmissionForm = ({ createFood }) => {
 
     return (
         <div>
-            <h6>Add Custom Food:</h6>
+            <h1>Create Custom Food:</h1>
             <form
                 className="new-newFood-form__form"
                 onSubmit={onFormSubmit}>
@@ -94,7 +94,7 @@ export const UserSubmissionForm = ({ createFood }) => {
                     <input
                         type="submit"
                         value="Add Food"
-                        className="UserSubmissionForm__submit-btn"/>
+                        className="btn btn-primary"/>
                 </div>
             </form>
         </div>

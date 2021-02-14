@@ -2,54 +2,44 @@
     box-sizing: border-box;
   }
 
+  .column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
   
-.food-list {
-    width: auto;
-    float: left;
-    padding: auto;
-    border: 1px solid plum;
-    /* border-bottom: 1px solid #eeeeee;
-    /* border-left:1px solid #000;
-    height:400px */
+  /* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
-.food-list__food-name {
-    width: auto;
-    float: left;
-    padding: auto;
-    border: 1px solid red;
-
-    /* margin-left: 200px;
-    text-align: justify;
-    text-justify: inter-word;
-    color: plum; */
+.card {
+    width: 100%;
+    background-color: rgb(187, 236, 240);
+}
+.card-title, .card-text {
+    color: black;
+    margin-top: 0%;
 }
 
-.food-list__food-image {
-    float: left;
-    padding: 15px;
-    /* margin-left: 5%; */
-    width: 175px;
-    height: auto;
-    border: 5px solid #555;
+.card-img-top {
+    border-radius: 25%;
+    margin-bottom: -11%;
 }
 
-.food-list__food-category {
-    width: 25%;
-    float: left;
-    padding: 15px;
-    border: 1px solid red;
-    /* margin-left: 200px; */
-    color: whitesmoke;
-    list-style: none;
-    text-align: justify;
-    text-justify: inter-word;
+.btn-primary {
+    width: 50%;
+    font-size: 120%;
+    margin-bottom: 5%;
 }
 
-.food-list__food-btn {
-    width: 25%;
-    float: left;
-    padding: 15px;
-    border: 1px solid red;
-    /* margin-right: 815px; */
+.btn-primary:hover:hover {
+    background-color: #53caee; /* Green */
+    color: black;
+    font-weight: bolder;
 }
+  
+
+  

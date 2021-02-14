@@ -34,61 +34,61 @@ export const FoodSearch = () => {
     console.log(selectedFood);
     axios.post(`${backend_url}/api/meal`, selectedFood)
       .then((response) => {
-      console.log(`added ${selectedFood} as meal`);
-      const result = response.data;
-      console.log(result);
-      setMeal(result);
-      setErrorMessage('');
-    })
-    .catch((error) => {
-      setErrorMessage(error.message);
-    })
+        console.log(`added ${selectedFood} as meal`);
+        const result = response.data;
+        console.log(result);
+        setMeal(result);
+        setErrorMessage('');
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      })
   }
 
   const createFood = (newFood) => {
     axios.post(`${backend_url}/api/food/${newFood}`, newFood)
-    .then((response) => {
-      const updatedFoodData = response.data;
-      setFoodResult(updatedFoodData);
-      setErrorMessage('');
-    })
-    .catch((error) => {
-      setErrorMessage(error.message);
-    })
+      .then((response) => {
+        const updatedFoodData = response.data;
+        setFoodResult(updatedFoodData);
+        setErrorMessage('');
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      })
   }
 
   const showFoods = foodResult.map(
     (food) => {
       console.log(food.image);
       return (
-        <div key={food.id} className='food-list'>
-          <img className='food-list__food-image' src={food.image} alt={food.name} />
-          <h1 className='food-list__food-name'>{food.name}</h1>
-          <br/>
-          <h5 className='food-list__food-category'>{food.energy.toFixed(2)} kcal</h5>
-          <h5 className='food-list__food-category'>{food.protein.toFixed(2)} g protein</h5>
-          <h5 className='food-list__food-category'>{food.carbohydrate.toFixed(2)} g carbohydrate</h5>
-          <h5 className='food-list__food-category'>{food.fat.toFixed(2)} g fat</h5>
-          <h5 className='food-list__food-category'>{food.fiber.toFixed(2)} g fiber</h5>
-          <button className='food-list__food-btn' onClick={() => addFoodAsMeal(food)}>Add</button>
-   
+        <div key={food.id} className='container'>
+          <div className='card'>
+          <h1 className='card-title'>{food.name}</h1>
+            <img className='card-img-top' src={food.image} alt={food.name} />
+            <div className='card-body'></div>
+            <h5 className='card-text'>{food.energy.toFixed(2)} kcal</h5>
+            <h5 className='card-text'>{food.protein.toFixed(2)} g protein</h5>
+            <h5 className='card-text'>{food.carbohydrate.toFixed(2)} g carbohydrate</h5>
+            <h5 className='card-text'>{food.fat.toFixed(2)} g fat</h5>
+            <h5 className='card-text'>{food.fiber.toFixed(2)} g fiber</h5>
+            <button className='btn btn-primary mx-auto d-block' onClick={() => addFoodAsMeal(food)}>Add</button>
+          </div>
         </div>)
     }
   )
 
   return (
-    <div>
-      <FoodSearchForm
-        getFood={getFood} />
-      <section>
+    <div className='row'>
+      <div className='column'>
+        <FoodSearchForm
+          getFood={getFood} />
         {foodResult.length > 0 && showFoods}
-      </section>
-      <hr></hr>
-      <div>
-        <UserSubmissionForm 
-        createFood={createFood} />
       </div>
-      {/* <h5nk to='/'>Back to foods</Link> */}
+      <hr></hr>
+      <div className='column'>
+        <UserSubmissionForm
+          createFood={createFood} />
+      </div>
     </div>
   )
 }
