@@ -1,13 +1,7 @@
-// https://github.com/yasoob/Flask-React-JWT/blob/master/src/auth/index.js
-import {createAuthProvider} from 'react-token-auth';
+import { Auth } from 'aws-amplify';
 
-
-export const [useAuth, authFetch, login, logout] =
-    createAuthProvider({
-        accessTokenKey: 'access_token',
-        onUpdateToken: (token) => fetch('/api/refresh', {
-            method: 'POST',
-            body: token.access_token
-        })
-        .then(r => r.json())
-    });
+export const isSignedIn = () => {
+    const user = Auth.currentAuthenticatedUser()
+    console.log(`user: ${user}`);
+    return user;
+}

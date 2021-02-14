@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import authAxios from '../utils/authAxios';
 import LineChart from "../Components/LineChart";
 import Label from "../Components/AxisLabel";
 import ChartTitle from "../Components/ChartTitle";
@@ -128,7 +128,7 @@ export const UserGraphs = ({ backend_url }) => {
     }
 
     const getWeekMeals = () => {
-        axios.get(`${backend_url}/api/meals_week`)
+        authAxios.get(`/api/meals_week`)
             .then(response => {
                 const result = response.data;
                 console.log(result);

@@ -1,24 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { FoodSearchForm } from '../Components/FoodSearchForm';
-// import { Delete } from '../Components/Delete'
-import {
-  useParams,
-  Link
-} from 'react-router-dom';
-import axios from 'axios';
+import authAxios from '../utils/authAxios';
 import './FoodSearch.css'
 import { UserSubmissionForm } from '../Components/UserSubmissionForm'
 
 
 export const FoodSearch = () => {
-  const backend_url = 'http://localhost:5000' //'https://rangereveal.aimeeoz.com'
-  // const { food } = useParams();
   const [foodResult, setFoodResult] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
   const [meal, setMeal] = useState(null);
 
   const getFood = (food) => {
-    axios.get(`${backend_url}/api/food/${food}`)
+    authAxios.get(`/api/food/${food}`)
       .then(response => {
         const result = response.data;
         console.log(result);
@@ -32,7 +25,7 @@ export const FoodSearch = () => {
 
   const addFoodAsMeal = (selectedFood) => {
     console.log(selectedFood);
-    axios.post(`${backend_url}/api/meal`, selectedFood)
+    authAxios.post(`/api/meal`, selectedFood)
       .then((response) => {
         console.log(`added ${selectedFood} as meal`);
         const result = response.data;
@@ -46,7 +39,7 @@ export const FoodSearch = () => {
   }
 
   const createFood = (newFood) => {
-    axios.post(`${backend_url}/api/food/${newFood}`, newFood)
+    authAxios.post(`/api/food/${newFood}`, newFood)
       .then((response) => {
         const updatedFoodData = response.data;
         setFoodResult(updatedFoodData);

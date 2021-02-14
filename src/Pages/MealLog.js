@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import authAxios from '../utils/authAxios';
 import { UserGraphs } from './UserGraphs'
 import './MealLog.css'
 
 export const MealLog = ({ userName }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [userMeals, setUserMeals] = useState([]);
-  const backend_url = 'http://localhost:5000'//'https://rangereveal.aimeeoz.com'
 
   useEffect(() => {
-    axios.get(`${backend_url}/api/meal`)
+    authAxios.get(`/api/meal`)
       .then(response => {
         const result = response.data;
         console.log(result);
@@ -23,7 +22,7 @@ export const MealLog = ({ userName }) => {
 
 
   const deleteMeal = (meal) => {
-    axios.post(`${backend_url}/api/delete_meal`, meal)
+    authAxios.post(`/api/delete_meal`, meal)
     .then((response) => {
       const result = response.data;
       console.log(result);
@@ -59,7 +58,7 @@ export const MealLog = ({ userName }) => {
       </div>
       <hr></hr>
       <div>
-        <UserGraphs userMeals={userMeals} backend_url={backend_url}/>
+        <UserGraphs userMeals={userMeals}/>
       </div>
     </div>
   )

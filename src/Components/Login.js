@@ -8,7 +8,7 @@ import './Login.css'
 Amplify.configure(awsconfig);
 
 // https://docs.amplify.aws/ui/auth/authenticator/q/framework/react#recommended-usage
-export const Login = ({ setCurrUser }) => {
+export const Login = () => {
     const [authState, setAuthState] = useState();
     const [user, setUser] = useState();
 
@@ -16,7 +16,6 @@ export const Login = ({ setCurrUser }) => {
         onAuthUIStateChange((nextAuthState, authData) => {
             setAuthState(nextAuthState);
             setUser(authData)
-            setCurrUser(authData)
             console.log(nextAuthState)
             console.log(authData)
         });

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import FlashMessage from 'react-flash-message';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import authAxios from '../utils/authAxios';
 import './UserProfile.css'
 
 export const UserProfile = ({ userData }) => {
-    const backend_url = 'http://localhost:5000' //'https://rangereveal.aimeeoz.com'
     const initState = {
         energy_min: '',
         energy_max: '',
@@ -31,7 +30,7 @@ export const UserProfile = ({ userData }) => {
     }
     const updateGoals = (userGoals) => {
         console.log(userGoals);
-        axios.post(`${backend_url}/api/curr_user`, userGoals)
+        authAxios.post(`/api/curr_user`, userGoals)
           .then((response) => {
           console.log(`added ${userGoals}`);
           const result = response.data;

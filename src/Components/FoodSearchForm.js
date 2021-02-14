@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import './FoodSearchForm.css'
 import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";

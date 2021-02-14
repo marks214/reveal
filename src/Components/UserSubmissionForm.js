@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import FlashMessage from 'react-flash-message';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import './UserSubmissionForm.css'
 
 export const UserSubmissionForm = ({ createFood }) => {
