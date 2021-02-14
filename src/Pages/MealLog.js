@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import authAxios from '../utils/authAxios';
+import axios from 'axios';
 import { UserGraphs } from './UserGraphs'
 import './MealLog.css'
 
@@ -8,7 +8,7 @@ export const MealLog = ({ userName }) => {
   const [userMeals, setUserMeals] = useState([]);
 
   useEffect(() => {
-    authAxios.get(`/api/meal`)
+    axios.get(`/api/meal`)
       .then(response => {
         const result = response.data;
         console.log(result);
@@ -22,7 +22,7 @@ export const MealLog = ({ userName }) => {
 
 
   const deleteMeal = (meal) => {
-    authAxios.post(`/api/delete_meal`, meal)
+    axios.post(`/api/delete_meal`, meal)
     .then((response) => {
       const result = response.data;
       console.log(result);

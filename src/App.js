@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withAuthenticator, AmplifySignOut, AmplifyAuthenticator } from '@aws-amplify/ui-react';
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
+import awsconfig from './aws-exports';
 import "bootswatch/dist/sketchy/bootstrap.min.css";
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
@@ -8,11 +9,17 @@ import { BrowserRouter as Router, Link, Switch, Route, Redirect, useParams } fro
 import { Home } from './Pages/Home'
 import { FoodSearch } from './Pages/FoodSearch'
 import { MealLog } from './Pages/MealLog'
+import axios from 'axios';
 import './App.css';
 import { About } from './Pages/About'
+import Amplify, { Cache } from 'aws-amplify';
+Amplify.configure(awsconfig);
 
 
 const App = () => {
+// const backend_url = 'http://localhost:5000'
+const backend_url = 'https://rangereveal.aimeeoz.com'
+axios.defaults.baseURL = backend_url;
 
   const [authState, setAuthState] = useState();
   const [user, setUser] = useState();
@@ -21,10 +28,13 @@ const App = () => {
         onAuthUIStateChange((nextAuthState, authData) => {
             setAuthState(nextAuthState);
             setUser(authData)
+            if (authData) {
+            axios.defaults.headers.Authorization = 'Bearer ' + authData.signInUserSession.accessToken.jwtToken;}
             console.log(nextAuthState)
             console.log(authData)
         });
     }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -52,8 +62,10 @@ const App = () => {
               <Route exact path="/search">
                 <FoodSearch />
               </Route>
-              </div>) :(
-            <AmplifyAuthenticator/> ) }
+              </div>) :( <div className='btn btn-secondary'>
+              <h1>Welcome to Range Reveal!</h1>
+            <AmplifyAuthenticator/>
+            </div> ) }
           </Switch>
         </Router>
       </header>

@@ -15,7 +15,7 @@ const authAxios = axios.create(
 )
 
 getToken().then(token => {
-    authAxios.defaults.headers.Authorization = 'Bearer ' + token;
+    axios.defaults.headers.Authorization = 'Bearer ' + token;
 })
 
 export default authAxios;

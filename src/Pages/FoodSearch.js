@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FoodSearchForm } from '../Components/FoodSearchForm';
-import authAxios from '../utils/authAxios';
+import axios from 'axios';
 import './FoodSearch.css'
 import { UserSubmissionForm } from '../Components/UserSubmissionForm'
 
@@ -11,7 +11,7 @@ export const FoodSearch = () => {
   const [meal, setMeal] = useState(null);
 
   const getFood = (food) => {
-    authAxios.get(`/api/food/${food}`)
+    axios.get(`/api/food/${food}`)
       .then(response => {
         const result = response.data;
         console.log(result);
@@ -25,7 +25,7 @@ export const FoodSearch = () => {
 
   const addFoodAsMeal = (selectedFood) => {
     console.log(selectedFood);
-    authAxios.post(`/api/meal`, selectedFood)
+    axios.post(`/api/meal`, selectedFood)
       .then((response) => {
         console.log(`added ${selectedFood} as meal`);
         const result = response.data;
@@ -39,7 +39,7 @@ export const FoodSearch = () => {
   }
 
   const createFood = (newFood) => {
-    authAxios.post(`/api/food/${newFood}`, newFood)
+    axios.post(`/api/food/${newFood}`, newFood)
       .then((response) => {
         const updatedFoodData = response.data;
         setFoodResult(updatedFoodData);

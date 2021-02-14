@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import FlashMessage from 'react-flash-message';
 import PropTypes from 'prop-types';
-import authAxios from '../utils/authAxios';
+import axios from 'axios';
 import './UserProfile.css'
 
 export const UserProfile = ({ userData }) => {
@@ -30,7 +30,7 @@ export const UserProfile = ({ userData }) => {
     }
     const updateGoals = (userGoals) => {
         console.log(userGoals);
-        authAxios.post(`/api/curr_user`, userGoals)
+        axios.post(`/api/curr_user`, userGoals)
           .then((response) => {
           console.log(`added ${userGoals}`);
           const result = response.data;
@@ -55,7 +55,7 @@ export const UserProfile = ({ userData }) => {
         <div>
             <h6>#GOALS</h6>
             <form
-                className="new-newFood-form__form"
+                className="form-group"
                 onSubmit={onFormSubmit}>
                 <div className="UserSubmissionForm__food-inputs">
                     {console.log('userProfile')}
@@ -168,7 +168,7 @@ export const UserProfile = ({ userData }) => {
                     <input
                         type="submit"
                         value="Update Goals"
-                        className="UserSubmissionForm__submit-btn" 
+                        className="btn btn-primary" 
                       />
                 </div>
             </form>
