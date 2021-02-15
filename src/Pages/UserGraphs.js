@@ -3,14 +3,12 @@ import axios from 'axios';
 import LineChart from "../Components/LineChart";
 import Label from "../Components/AxisLabel";
 import ChartTitle from "../Components/ChartTitle";
-import './UserGraphs.css'
 
 let data = {}
 
-export const UserGraphs = ({ backend_url }) => {
+export const UserGraphs = () => {
     
     const [errorMessage, setErrorMessage] = useState(null);
-    // const [userMeals, setUserMeals] = useState([]);
     const [isRevealed, setisRevealed] = useState(false);
 
     const parseUserMealData = (userMeals) => {
@@ -110,14 +108,8 @@ export const UserGraphs = ({ backend_url }) => {
             }
         }
         setisRevealed(true);
-        console.log('here');
-        console.log(data);
+        
 
-
-        // return (
-        //     <div>
-        //     </div>
-        // )
     }
 
     const styles = {
@@ -144,11 +136,10 @@ export const UserGraphs = ({ backend_url }) => {
     return (
         <div>
             <div>
-                <h1>UserGraphs</h1>
-                <button onClick={() => getWeekMeals()}>Reveal</button>
+                <button className='btn btn-primary mx-auto d-block' onClick={() => getWeekMeals()}>Reveal Data</button>
             </div>
             <div style={styles.chartComponentsContainer}>
-                <div />
+                <div/>
                 {isRevealed &&
                     <ChartTitle text="ENERGY" />}
                 {isRevealed && <Label text="kcal" rotate />}

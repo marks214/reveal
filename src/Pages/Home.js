@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import { Login } from '../Components/Login'
 import { UserProfile } from '../Components/UserProfile';
 import axios from 'axios';
 import { AmplifyAuthenticator, AmplifySignIn, AmplifySignInButton, AmplifySignOut } from '@aws-amplify/ui-react';
@@ -24,12 +23,12 @@ export const Home = ({ user }) => {
 
     return (
         <div>
-            <h1>{user.username}'s Profile</h1>
-            <UserProfile />
-            <div className='btn btn-primary'>
+          <div className='btn btn-primary'>
                 <AmplifySignOut 
                 />
             </div>
+            <h1>{user.username}'s Profile</h1>
+            <UserProfile />
         </div>
     )
 }

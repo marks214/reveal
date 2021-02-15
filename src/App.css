@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo- infinite 200s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -24,19 +13,29 @@
   color: white;
 }
 
-.App-link {
+.nav-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  font-size: 240%;
+  font-style: un;
 }
 
 .App-list {
   list-style: none;
+}
+
+amplify-authenticator {
+  --amplify-primary-color:  rgb(2, 22, 22);
+  --amplify-primary-contrast: teal;
+  --amplify-primary-tint:  rgb(2, 22, 22);
+  --amplify-primary-shade:  rgb(2, 22, 22);
+  --amplify-background-color: rgb(114, 173, 173);
+  --amplify-font-family: 'Cabin Sketch', cursive;
+
+}
+
+footer{
+  display: table;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }

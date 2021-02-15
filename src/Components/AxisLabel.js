@@ -2,10 +2,10 @@
 import React from "react";
 
 const style = {
-  display: "inline-block",
+  display: "block",
   width: '100%',
   textAlign: 'center',
-  color: "#808080",
+  color: "#78d7e3",
 };
 
 const rotateStyles = {

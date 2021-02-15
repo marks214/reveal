@@ -18,25 +18,41 @@
 .card {
     width: 100%;
     background-color: rgb(187, 236, 240);
+    text-align: justify;
 }
-.card-title, .card-text {
+
+.card-text {
     color: black;
-    margin-top: 0%;
+    font-family: "Cabin Sketch",cursive;
+    margin-left: 15%;
+    padding: 0%;
+}
+
+p:first-of-type {
+    padding-top: 25%;
+
+}
+
+.card-title {
+    font-size: 300%;
+    margin-top: 1%;
+    color: black;
+    font-weight: bolder;
 }
 
 .card-img-top {
     border-radius: 25%;
-    margin-bottom: -11%;
 }
 
 .btn-primary {
     width: 50%;
     font-size: 120%;
+    margin-top: 5%;
     margin-bottom: 5%;
 }
 
 .btn-primary:hover:hover {
-    background-color: #53caee; /* Green */
+    background-color: #53caee; 
     color: black;
     font-weight: bolder;
 }

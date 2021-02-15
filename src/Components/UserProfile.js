@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import FlashMessage from 'react-flash-message';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import './UserProfile.css'
@@ -45,9 +44,6 @@ export const UserProfile = () => {
     const onFormSubmit = (event) => {
         event.preventDefault();
         updateGoals(userGoals);
-        <FlashMessage duration={50000} persistOnHover={true}>
-            <p>#goals</p>
-        </FlashMessage>
     }
 
     return (
@@ -60,100 +56,90 @@ export const UserProfile = () => {
                     {console.log(userGoals)}
                     <ul>
                         <li>
-                            <label />Energy Min&nbsp;&nbsp;
+                            <label />Energy Min (kcal)
                     <input
                                 name='energy_min'
-                                // placeholder={ }
                                 value={userGoals.energy_min}
                                 type='number'
                                 onChange={onInputChange}
                             />
                         </li>
                         <li>
-                            <label />Energy Max&nbsp;&nbsp;
+                            <label />Energy Max (kcal)
                     <input
                                 name='energy_max'
-                                // placeholder={ }
                                 value={userGoals.energy_max}
                                 type='number'
                                 onChange={onInputChange}
                             />
                         </li>
                         <li>
-                            <label />Protein Min&nbsp;&nbsp;
+                            <label />Protein Min (g)
                     <input
                                 name='protein_min'
-                                // placeholder={ }
                                 value={userGoals.protein_min}
                                 type='number'
                                 onChange={onInputChange}
                             />
                         </li>
                         <li>
-                            <label />Protein Max&nbsp;&nbsp;
+                            <label />Protein Max (g)
                     <input
                                 name='protein_max'
-                                // placeholder={ }
                                 value={userGoals.protein_max}
                                 type='number'
                                 onChange={onInputChange}
                             />
                         </li>
                         <li>
-                            <label />Carb Min&nbsp;&nbsp;
+                            <label />Carb Min (g)
                     <input
                                 name='carb_min'
-                                // placeholder={ }
                                 value={userGoals.carb_min}
                                 type='number'
                                 onChange={onInputChange}
                             />
                         </li>
                         <li>
-                            <label /> Carb Max&nbsp;&nbsp;
+                            <label /> Carb Max (g)
                     <input
                                 name='carb_max'
-                                // placeholder={ }
                                 value={userGoals.carb_max}
                                 type='number'
                                 onChange={onInputChange}
                             />
                         </li>
                         <li>
-                            <label />Fat Min&nbsp;&nbsp;
+                            <label />Fat Min (g)
                     <input
                                 name='fat_min'
-                                // placeholder={ }
                                 value={userGoals.fat_min}
                                 type='number'
                                 onChange={onInputChange}
                             />
                         </li>
                         <li>
-                            <label /> Fat Max&nbsp;&nbsp;
+                            <label /> Fat Max (g)
                     <input
                                 name='fat_max'
-                                // placeholder={ }
                                 value={userGoals.fat_max}
                                 type='number'
                                 onChange={onInputChange}
                             />
                         </li>
                         <li>
-                            <label /> Fiber Min&nbsp;&nbsp;
+                            <label /> Fiber Min (g)
                     <input
                                 name='fiber_min'
-                                // placeholder={ }
                                 value={userGoals.fiber_min}
                                 type='number'
                                 onChange={onInputChange}
                             />
                         </li>
                         <li>
-                            <label /> Fiber Max&nbsp;&nbsp;
+                            <label /> Fiber Max (g)
                     <input
                                 name='fiber_max'
-                                // placeholder={ }
                                 value={userGoals.fiber_max}
                                 type='number'
                                 onChange={onInputChange}

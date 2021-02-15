@@ -1,22 +1,27 @@
 li {
+    margin-top: 1%;
     list-style: none;
-    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-align: left;
+    font-family: "Cabin Sketch",cursive;
 }
 
 div {
-    margin-top: 30px;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 label {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    text-align: right;
-    margin-bottom: 10px;
-    margin-left: 10px;
+    text-align: left;
+    margin-bottom: 1%;
+    margin-left: 1%;
 }
 
 input {
-    flex: 0 0 200px;
-    margin-left: 10px;
+    margin-left: 1%;
 }

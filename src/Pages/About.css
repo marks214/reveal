@@ -9,3 +9,7 @@ a:hover {
 a::after {
     color: teal;
 }
+
+.container {
+    text-align: justify;
+}

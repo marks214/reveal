@@ -2,7 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const STROKE = 1;
+const STROKE = 2;
 
 const LineChart = ({
     data,
@@ -110,7 +110,7 @@ const LineChart = ({
                     x={x}
                     y={y}
                     style={{
-                        fill: "#808080",
+                        fill: "#3bedc1",
                         fontSize: FONT_SIZE,
                         fontFamily: "Helvetica"
                     }}
@@ -135,7 +135,7 @@ const LineChart = ({
                     x={x}
                     y={yCoordinate}
                     style={{
-                        fill: "#808080",
+                        fill: "#3bedc1",
                         fontSize: FONT_SIZE,
                         fontFamily: "Helvetica"
                     }}
@@ -160,7 +160,7 @@ const LineChart = ({
 
             <polyline
                 fill="none"
-                stroke="#0074d9"
+                stroke="#f30af7"
                 strokeWidth={STROKE}
                 points={points}
             />

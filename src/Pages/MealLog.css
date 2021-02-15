@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+  }
+
+  .column {
+    float:left;
+    width: 50%;
+    padding: 2%;
+    margin-top: -10%;
+}
+  
+  /* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.card {
+    width: 60%;
+    margin-left: 22%;
+    background-color: rgb(187, 236, 240);
+}
+
+.card-title {
+    font-size: 100%;
+}
+.card-title, .card-body {
+    color: black;
+    margin-top: 1%;
+}
+
+.card-body {
+    text-align: justify;
+    font-size: 80%;
+    font-family: "Cabin Sketch",cursive;
+    margin-inline: 5%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    padding: 0%;
+    float: left;
+}
+
+.card-img-top {
+    border-radius: 25%;
+    margin-bottom: -11%;
+}
+
+.btn-primary {
+    width: 50%;
+    font-size: 120%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.btn-primary:hover:hover {
+    background-color: #53caee;
+    color: black;
+    font-weight: bolder;
+}
+
+h1 {
+    margin-left: 7%;
+}

@@ -56,15 +56,16 @@ export const FoodSearch = () => {
       return (
         <div key={food.id} className='container'>
           <div className='card'>
-          <h1 className='card-title'>{food.name}</h1>
+            <h1 className='card-title'>{food.name}</h1>
             <img className='card-img-top' src={food.image} alt={food.name} />
-            <div className='card-body'></div>
-            <h5 className='card-text'>{food.energy.toFixed(2)} kcal</h5>
-            <h5 className='card-text'>{food.protein.toFixed(2)} g protein</h5>
-            <h5 className='card-text'>{food.carbohydrate.toFixed(2)} g carbohydrate</h5>
-            <h5 className='card-text'>{food.fat.toFixed(2)} g fat</h5>
-            <h5 className='card-text'>{food.fiber.toFixed(2)} g fiber</h5>
-            <button className='btn btn-primary mx-auto d-block' onClick={() => addFoodAsMeal(food)}>Add</button>
+            <div className='card-body'>
+              <p className='card-text'>{food.energy.toFixed(2)} kcal</p>
+              <p className='card-text'>{food.protein.toFixed(2)} g protein</p>
+              <p className='card-text'>{food.carbohydrate.toFixed(2)} g carbohydrate</p>
+              <p className='card-text'>{food.fat.toFixed(2)} g fat</p>
+              <p className='card-text'>{food.fiber.toFixed(2)} g fiber</p>
+              <button className='btn btn-primary mx-auto d-block' onClick={() => addFoodAsMeal(food)}>Add</button>
+            </div>
           </div>
         </div>)
     }
