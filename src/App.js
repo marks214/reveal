@@ -17,8 +17,8 @@ Amplify.configure(awsconfig);
 
 
 const App = () => {
-const backend_url = 'http://localhost:5000'
-// const backend_url = 'https://rangereveal.aimeeoz.com'
+// const backend_url = 'http://localhost:5000'
+const backend_url = 'https://rangereveal.aimeeoz.com'
 axios.defaults.baseURL = backend_url;
 
   const [authState, setAuthState] = useState();
