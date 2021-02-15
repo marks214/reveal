@@ -17,8 +17,8 @@ Amplify.configure(awsconfig);
 
 
 const App = () => {
-// const backend_url = 'http://localhost:5000'
-const backend_url = 'https://rangereveal.aimeeoz.com'
+const backend_url = 'http://localhost:5000'
+// const backend_url = 'https://rangereveal.aimeeoz.com'
 axios.defaults.baseURL = backend_url;
 
   const [authState, setAuthState] = useState();
@@ -28,7 +28,7 @@ axios.defaults.baseURL = backend_url;
         onAuthUIStateChange((nextAuthState, authData) => {
             setAuthState(nextAuthState);
             setUser(authData)
-            if (authData) {
+            if (authData && authData.signInUserSession) {
             axios.defaults.headers.Authorization = 'Bearer ' + authData.signInUserSession.accessToken.jwtToken;}
             console.log(nextAuthState)
             console.log(authData)

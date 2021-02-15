@@ -10,7 +10,7 @@ export const Home = ({ user }) => {
     const [errorMessage, setErrorMessage] = useState(null);
     
     useEffect(() => {
-      axios.get(`/api/curr_user`)
+      axios.get(`/api/user`)
         .then(response => {
           const result = response.data;
           console.log(result);
