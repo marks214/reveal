@@ -27,7 +27,7 @@ export const FoodSearchForm = ({ getFood }) => {
     return (
         <div>
             <form
-                className="new-food-form__form"
+                className="form-group"
                 onSubmit={onFormSubmit}>
                 <TextField
                 

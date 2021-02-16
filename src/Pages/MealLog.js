@@ -61,6 +61,7 @@ export const MealLog = ({ user }) => {
       </div>
       <hr></hr>
       <div className='column'>
+        <h1>Ready to See Your Metrics?</h1>
         <UserGraphs userMeals={userMeals} user={user} />
       </div>
     </div>

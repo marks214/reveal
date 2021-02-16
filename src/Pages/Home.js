@@ -23,12 +23,12 @@ export const Home = ({ user }) => {
 
     return (
         <div>
-          <div className='btn btn-primary'>
+            <h1>{user.username}'s Profile</h1>
+            <UserProfile />
+            <div className='btn btn-primary'>
                 <AmplifySignOut 
                 />
             </div>
-            <h1>{user.username}'s Profile</h1>
-            <UserProfile />
         </div>
     )
 }
