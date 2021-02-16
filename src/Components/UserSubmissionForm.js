@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import FlashMessage from 'react-flash-message';
 import PropTypes from 'prop-types';
 import './UserSubmissionForm.css'
 
@@ -14,7 +13,6 @@ export const UserSubmissionForm = ({ createFood }) => {
     }
 
     const [newFood, setNewFood] = useState(initState);
-    // const [isSubmitted, setIsSubmitted] = useState(false);
 
     const onInputChange = (event) => {
         const newFoodData = {
@@ -27,9 +25,6 @@ export const UserSubmissionForm = ({ createFood }) => {
     const onFormSubmit = (event) => {
         event.preventDefault();
         createFood(newFood);
-        <FlashMessage duration={50000} persistOnHover={true}>
-            <p>{newFood.name} has been added!</p>
-        </FlashMessage>
         setNewFood(initState);
     }
 
@@ -37,7 +32,7 @@ export const UserSubmissionForm = ({ createFood }) => {
         <div>
             <h1>Create Custom Food:</h1>
             <form
-                className="new-newFood-form__form"
+                className="form-group"
                 onSubmit={onFormSubmit}>
                 <div className="UserSubmissionForm__food-inputs">
                     <input
