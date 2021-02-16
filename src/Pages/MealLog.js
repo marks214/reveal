@@ -55,13 +55,13 @@ export const MealLog = ({ user }) => {
   return (
     <div className='row'>
       <div className='column'>
-        <h1>{user.username}'s Food Journal</h1>
+        <h1 className='column-header'>{user.username}'s Food Journal</h1>
         {console.log(userMeals.length)}
         {userMeals.length > 0 && showMeals}
       </div>
       <hr></hr>
       <div className='column'>
-        <h1>Ready to See Your Metrics?</h1>
+        <h1 className='column-header'>Ready to See Your Metrics?</h1>
         <UserGraphs userMeals={userMeals} user={user} />
       </div>
     </div>
