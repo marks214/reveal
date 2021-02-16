@@ -65,8 +65,7 @@ const App = () => {
                 <Route exact path="/search">
                   <FoodSearch />
                 </Route>
-              </div>) : (<div className='btn btn-secondary'>
-                <h1>Welcome to Range Reveal!</h1>
+              </div>) : (<div>
                 <AmplifyAuthenticator
                 />
               </div>)}

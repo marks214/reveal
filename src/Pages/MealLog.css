@@ -32,18 +32,17 @@
 
 .card-body {
     text-align: justify;
-    font-size: 80%;
+    font-size: 70%;
     font-family: "Cabin Sketch",cursive;
-    margin-inline: 5%;
+    margin-inline: 10%;
     margin-top: 0%;
     margin-bottom: 0%;
     padding: 0%;
     float: left;
 }
 
-.card-img-top {
-    border-radius: 25%;
-    margin-bottom: -11%;
+.card-body:first-of-type {
+    margin-top: -35%;
 }
 
 .btn-primary {
