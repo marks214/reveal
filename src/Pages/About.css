@@ -14,19 +14,19 @@ a::after {
     text-align: justify;
 }
 
-img:first-of-type, :nth-of-type(3) {
+.about-img:first-of-type, .about-img:nth-of-type(3) {
     width: 40%;
     height: auto;
 }
 
-img:nth-of-type(2) {
+.about-img:nth-of-type(2) {
     width: 20%;
     height: auto;
 }
 
 .gradient {
     width: 100%;
-  border: 30px solid;
-  border-image: repeating-linear-gradient(45deg, cyan, magenta, cyan 30px) 60;
-  padding: 0%;
+    border: 30px solid;
+    border-image: repeating-linear-gradient(45deg, cyan, magenta, cyan 30px) 60;
+    padding: 0%;
 }
