@@ -11,7 +11,7 @@
 3. [How to use Range Reveal?](#how-to)
 
 
-# <a name="install">Installation Guide</a>
+# <a name="install">Frontend Installation Guide</a>
 1. Clone this repository. `git clone https://github.com/marks214/reveal.git`
 2. Navigate to the project directory. `cd reveal`
 3. Install the dependencies. `npm install`
