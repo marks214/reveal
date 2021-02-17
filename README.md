@@ -21,6 +21,7 @@
 In package.json the proxy for the backend is set to http://localhost:5000/. This may need to be changed to reflect your local backend server's address (e.g., http://127.0.0.1:5000, http://localhost:3001, etc.).
 
 Currently the backend url accessed by the app is https://www.rangereveal.aimeeoz.com. Set it to your local server.
+
 <img src="https://user-images.githubusercontent.com/46636425/108148363-7fadf400-7085-11eb-9425-f19af639d3ba.png" width="500" height="auto" />
 
 # <a name="what">What is Range Reveal?</a>
