@@ -2,7 +2,7 @@
 
 ### Capstone Project - Aimee Oz - [Ada Developers Academy](https://adadevelopersacademy.org/)
 
-- Reveal is the frontend repository of Range Reveal, bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
+- Reveal is the frontend repository of Range Reveal, bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It was deployed with [AWS Amplify](https://docs.amplify.aws/).
 - [Range](https://github.com/marks214/range) is the backend repository.
 
 ## Contents
@@ -12,10 +12,14 @@
 
 
 # <a name="install">Installation Guide</a>
-1. Clone this repository. `git clone https://github.com/marks214/reveal.git`
-2. Navigate to the project directory. `cd reveal`
-3. Install the dependencies. `npm install`
-4. Run the server. `npm start`
+1. Clone this repository. 
+    `$  git clone https://github.com/marks214/reveal.git`
+2. Navigate to the project directory. 
+    `$  cd reveal`
+3. Install the dependencies. 
+    `$  npm install`
+4. Run the server. 
+    `$  npm start`
 
 ### Stuff You Should Know:
 In package.json the proxy for the backend is set to http://localhost:5000/. This may need to be changed to reflect your local backend server's address (e.g., http://127.0.0.1:5000, http://localhost:3001, etc.).
